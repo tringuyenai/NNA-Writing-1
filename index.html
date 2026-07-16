@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Prep Master - TVU Writing</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.3s ease-out forwards',
+                        slideUp: 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(4px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(156, 163, 175, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- APP HEADER -->
+    <header class="sticky top-0 z-40 w-full border-b backdrop-blur bg-white/80 dark:bg-[#15151e]/80 border-gray-200 dark:border-zinc-800/80 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('dashboard')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#005b94] to-emerald-500 flex items-center justify-center text-white font-black text-lg shadow-md">
+                    W
+                </div>
+                <div>
+                    <h1 class="text-sm font-black tracking-tight dark:text-white">PREP MASTER</h1>
+                    <p class="text-[9px] text-[#005b94] dark:text-emerald-400 font-bold tracking-widest uppercase">Writing Edition</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-gray-100 dark:bg-zinc-800/80 hover:bg-gray-200 dark:hover:bg-zinc-700/80 transition-colors cursor-pointer"></button>
+                <button onclick="openResetModal()" class="px-3.5 py-2 rounded-xl bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-950/40 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-rotate-right text-[10px]"></i>
+                    Làm mới toàn bộ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP WRAPPER -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- VIEW: DASHBOARD -->
+        <div id="view-dashboard" class="space-y-8 animate-fadeIn max-w-3xl mx-auto">
+            <!-- Hero banner card -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-[#121b2d] p-6 sm:p-10 text-white shadow-xl text-center">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent)]"></div>
+                <div class="relative z-10 space-y-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold tracking-wide uppercase mx-auto">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Chuyên đề Writing
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Cổng Ôn Tập Trực Tuyến & Chấm Điểm AI</h2>
+                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-xl mx-auto">
+                        Hệ thống hỗ trợ phản hồi kết quả trắc nghiệm lập tức và chấm điểm tự luận Heuristic phân tích cấu trúc đoạn văn, giúp bạn củng cố kiến thức nền tảng.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CARD: WRITING (Centered) -->
+            <div class="group bg-white dark:bg-[#1a1a24] rounded-2xl border border-gray-200 dark:border-zinc-800/80 p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                <div class="space-y-4 text-center">
+                    <div class="flex justify-center items-start mb-2">
+                        <div class="w-16 h-16 rounded-2xl bg-sky-50 dark:bg-sky-950/30 text-[#005b94] dark:text-sky-400 flex items-center justify-center text-3xl shadow-inner">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 font-bold text-[10px] uppercase inline-block">TVU Foundation</span>
+                        <h4 class="text-xl font-extrabold text-gray-900 dark:text-white group-hover:text-[#005b94] transition-colors">Foundation Writing</h4>
+                        <p class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed max-w-md mx-auto">Ôn luyện viết câu thành phần (Topic, Supporting, Concluding) và dựng đoạn văn hoàn chỉnh theo chuẩn học phần Foundation 1.</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800/50 grid grid-cols-2 gap-4">
+                    <button onclick="startWritingQuiz('mcq')" class="py-3 rounded-xl bg-[#005b94] hover:bg-[#004775] text-white text-sm font-bold transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-list-check"></i> Trắc nghiệm Viết
+                    </button>
+                    <button onclick="startWritingQuiz('essay')" class="py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-file-signature"></i> Tự luận & Chấm AI
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: MCQ PRACTICE -->
+        <div id="view-mcq-quiz" class="hidden animate-fadeIn">
+            <div class="sticky top-16 z-30 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/95 dark:bg-[#1a1a24]/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800/80 shadow-sm">
+                <div class="space-y-1">
+                    <h3 id="quiz-course-title" class="text-sm font-extrabold dark:text-white"></h3>
+                    <p id="quiz-course-subtitle" class="text-[10px] text-gray-500 dark:text-zinc-400"></p>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <div class="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-zinc-800 text-xs font-semibold dark:text-white flex-1 sm:flex-none text-center" id="live-mcq-score">
+                        Đang thống kê...
+                    </div>
+                    <button onclick="openExitModal()" class="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 text-xs font-bold transition-all cursor-pointer">
+                        Thoát
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-8 space-y-6" id="mcq-questions-container"></div>
+                <div class="hidden lg:block lg:col-span-4 sticky top-24 space-y-4">
+                    <div class="p-5 rounded-2xl bg-white dark:bg-[#1a1a24] border border-gray-200 dark:border-zinc-800/80 shadow-sm space-y-4">
+                        <h4 class="text-xs font-black uppercase tracking-wider dark:text-white">Bảng điều hướng câu hỏi</h4>
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="p-3 rounded-xl bg-gray-50 dark:bg-[#15151e]">
+                                <p class="text-[10px] text-gray-400 uppercase font-semibold">Đã làm</p>
+                                <span class="text-lg font-black dark:text-white" id="stat-answered-count">0/0</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/10">
+                                <p class="text-[10px] text-emerald-600 dark:text-emerald-400 uppercase font-semibold">Đúng</p>
+                                <span class="text-lg font-black text-emerald-600 dark:text-emerald-400" id="stat-correct-count">0</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 max-h-56 overflow-y-auto pr-1" id="sidebar-mcq-grid"></div>
+                        <div class="pt-4 border-t border-gray-100 dark:border-zinc-800/50">
+                            <button onclick="openResetModal()" class="w-full py-2.5 bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-950/40 text-xs font-bold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-rotate-right"></i> Làm lại & Xáo trộn đề
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: ESSAY PRACTICE -->
+        <div id="view-essay-quiz" class="hidden animate-fadeIn space-y-6">
+            <div class="sticky top-16 z-30 flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-white/95 dark:bg-[#1a1a24]/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800/80 shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span id="essay-task-select-label" class="text-xs font-extrabold text-gray-500 dark:text-zinc-400 uppercase shrink-0">Chọn Đề tài:</span>
+                    <select id="essay-task-select" onchange="loadSelectedEssayTask()" class="bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white border border-transparent hover:border-[#005b94] rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-[#005b94] cursor-pointer"></select>
+                </div>
+                <div class="flex items-center gap-2 self-end md:self-auto">
+                    <button onclick="handleGradeEssay()" class="px-4 py-2.5 rounded-xl bg-[#005b94] hover:bg-[#004775] text-white text-xs font-black transition-all shadow-md flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-calculator"></i> Nộp bài & Chấm AI
+                    </button>
+                    <button onclick="openExitModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 text-xs font-bold transition-all cursor-pointer">
+                        Thoát
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="p-6 rounded-2xl bg-[#121b2d] text-white space-y-3 shadow-md relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent)]"></div>
+                        <span class="inline-block px-2 py-0.5 bg-[#005b94] text-white rounded font-bold text-[8px] uppercase tracking-wider" id="essay-task-title">Đang tải...</span>
+                        <h3 class="text-lg font-extrabold leading-relaxed" id="essay-task-prompt"></h3>
+                        <p class="text-[10px] text-zinc-400 font-medium">Bấm "Nạp bài mẫu" ở từng câu thành phần để tham khảo đáp án tiêu chuẩn.</p>
+                    </div>
+                    <div class="space-y-6" id="essay-subquestions-container"></div>
+                </div>
+                <div class="lg:col-span-4 sticky top-24 space-y-4">
+                    <div class="p-5 rounded-2xl bg-white dark:bg-[#1a1a24] border border-gray-200 dark:border-zinc-800/80 shadow-sm space-y-4">
+                        <h4 class="text-xs font-black uppercase tracking-wider dark:text-white">Báo cáo chấm điểm tự động</h4>
+                        <div id="essay-grading-panel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- TOASTS & MODALS -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <div id="modal-reset" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeResetModal()"></div>
+        <div class="relative bg-white dark:bg-[#1a1a24] rounded-2xl max-w-sm w-full p-6 shadow-xl border border-gray-200 dark:border-zinc-800 animate-slideUp space-y-4">
+            <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="space-y-1.5">
+                <h4 class="text-sm font-black dark:text-white">Xác nhận làm mới bài học?</h4>
+                <p class="text-xs text-gray-500 dark:text-zinc-400 leading-relaxed">
+                    Hệ thống sẽ xóa sạch mọi kết quả đã trả lời và xáo trộn lại thứ tự câu hỏi.
+                </p>
+            </div>
+            <div class="flex gap-3 pt-2">
+                <button onclick="handleResetSession()" class="flex-1 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl cursor-pointer">
+                    Đồng ý
+                </button>
+                <button onclick="closeResetModal()" class="flex-1 py-2.5 bg-gray-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 font-bold text-xs rounded-xl cursor-pointer">
+                    Hủy bỏ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-exit" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeExitModal()"></div>
+        <div class="relative bg-white dark:bg-[#1a1a24] rounded-2xl max-w-sm w-full p-6 shadow-xl border border-gray-200 dark:border-zinc-800 animate-slideUp space-y-4">
+            <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-door-open"></i>
+            </div>
+            <div class="space-y-1.5">
+                <h4 class="text-sm font-black dark:text-white">Bạn có chắc chắn muốn rời đi?</h4>
+                <p class="text-xs text-gray-500 dark:text-zinc-400 leading-relaxed">
+                    Tiến độ làm bài hiện tại trong phần học này sẽ bị xóa bỏ nếu bạn rời khỏi màn hình luyện tập.
+                </p>
+            </div>
+            <div class="flex gap-3 pt-2">
+                <button onclick="confirmExit()" class="flex-1 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl cursor-pointer">
+                    Thoát
+                </button>
+                <button onclick="closeExitModal()" class="flex-1 py-2.5 bg-gray-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 font-bold text-xs rounded-xl cursor-pointer">
+                    Hủy bỏ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const writingQuestionsData = [
+            { question: "She has a beautiful ___.", options: ["smiled", "smile", "smiles", "smiling"], answer: 1, explanation: "Đáp án đúng là: smile. Vì: \"Smile\" là một danh từ chỉ nụ cười." },
+            { question: "He ___ his homework before dinner.", options: ["doing", "did", "do", "does"], answer: 1, explanation: "Đáp án đúng là: did. Dùng quá khứ đơn vì hành động xảy ra trước một thời điểm trong quá khứ." },
+            { question: "I usually _____ breakfast at 7 AM.", options: ["having", "had", "have", "has"], answer: 2, explanation: "Đáp án đúng là: have. Đối với chủ ngữ \"I,\" động từ ở thì hiện tại đơn không thay đổi hình thức." },
+            { question: "While we ______ (walk) in the park, it suddenly ______ (start) to rain.", options: ["were walking / was starting", "walked / was starting", "walked / started", "were walking / started"], answer: 3, explanation: "\"were walking\" diễn tả hành động đang xảy ra thì \"started\" diễn tả hành động khác xen vào." },
+            { question: "When I ______ (arrive) at the station, the train ______ (still/be) there.", options: ["was arriving / still was", "was arriving / still being", "arrived / was still being", "arrived / was still"], answer: 3, explanation: "Đáp án đúng là: arrived / was still." },
+            { question: "They __________ (not / play) in the park.", options: ["isn't playing", "are not playing", "am not playing", "is not playing"], answer: 1, explanation: "\"They\" đi với \"are\", và phủ định là \"are not\"." },
+            { question: "_____ they understand the instructions?", options: ["Is", "Are", "Do", "Does"], answer: 2, explanation: "Chủ ngữ số nhiều \"they\" sử dụng \"do\" để đặt câu hỏi hiện tại đơn." },
+            { question: "__________ she __________ (watch) TV at the moment?", options: ["Is / watching", "Are / watching", "Am / watching", "Is / watches"], answer: 0, explanation: "Dấu hiệu \"at the moment\" yêu cầu thì hiện tại tiếp diễn." },
+            { question: "She _____ to the gym every day.", options: ["goes", "is going", "go", "went"], answer: 0, explanation: "Dấu hiệu \"every day\" yêu cầu thì hiện tại đơn." },
+            { question: "They _____ a lot of books.", options: ["readed", "reads", "are reading", "read"], answer: 3, explanation: "Chủ ngữ \"They\" động từ không chia (giữ nguyên)." },
+            { question: "While I ______ (cook), my sister ______ (set) the table.", options: ["cooked / was setting", "was cooking / set", "cooked / set", "was cooking / was setting"], answer: 3, explanation: "Hai hành động đang diễn ra cùng lúc trong quá khứ." },
+            { question: "My brother _____ his homework every evening.", options: ["does", "doing", "do", "did"], answer: 0, explanation: "Dấu hiệu \"every evening\" yêu cầu hiện tại đơn." },
+            { question: "I ______ (watch) TV when my mom ______ (call) me for dinner.", options: ["watched / was calling", "watched / called", "was watching / was calling", "was watching / called"], answer: 3, explanation: "Hành động đang diễn ra (quá khứ tiếp diễn) thì hành động khác xen vào (quá khứ đơn)." },
+            { question: "____ is on the table.", options: ["Apple", "The", "Quickly", "Her"], answer: 0, explanation: "\"Apple\" là danh từ đóng vai trò làm chủ ngữ." },
+            { question: "She ______ (not/see) the movie last night because she ______ (study) for the exam.", options: ["didn't see / studied", "wasn't seeing / was studying", "didn't see / was studying", "wasn't seeing / studied"], answer: 2, explanation: "Quá khứ đơn phủ định và quá khứ tiếp diễn diễn tả lý do đang xảy ra." },
+            { question: "What ______ (you/do) when the accident ______ (happen)?", options: ["were you doing / happened", "did you do / was happening", "did you do / happened", "were you doing / was happening"], answer: 0, explanation: "Hỏi về hành động đang xảy ra khi một sự kiện khác xen vào." },
+            { question: "She has ____ books in her bag.", options: ["much", "sings", "fast", "many"], answer: 3, explanation: "\"Many\" là tính từ chỉ số lượng đếm được." },
+            { question: "There ___ many students in the classroom.", options: ["is", "are", "have", "has"], answer: 1, explanation: "\"There are\" dùng cho danh từ số nhiều." },
+            { question: "Is ___ any milk in the fridge?", options: ["they", "there", "it", "are"], answer: 1, explanation: "Cấu trúc \"Is there\"." },
+            { question: "The ____ cat is sleeping.", options: ["quickly", "tired", "with", "loudly"], answer: 1, explanation: "\"Tired\" là tính từ miêu tả danh từ." },
+            { question: "There ___ no books on the shelf.", options: ["were", "are", "is", "was"], answer: 1, explanation: "\"There are\" dùng cho \"no books\" (số nhiều)." },
+            { question: "She danced _______ at the party.", options: ["there", "rarely", "tomorrow", "beautifully"], answer: 3, explanation: "Trạng từ chỉ cách thức bổ nghĩa cho động từ." },
+            { question: "He is a ____ boy.", options: ["quickly", "quietly", "run", "tall"], answer: 3, explanation: "Tính từ đứng trước danh từ." },
+            { question: "I am late because ___ the traffic jam.", options: ["from", "of", "about", "for"], answer: 1, explanation: "Cụm giới từ \"because of\" đi với danh từ/cụm danh từ." },
+            { question: "She will visit us _______.", options: ["soon", "loudly", "yesterday", "rarely"], answer: 0, explanation: "Trạng từ chỉ thời gian trong tương lai." },
+            { question: "The cat moved _______ across the room.", options: ["soon", "always", "silently", "everywhere"], answer: 2, explanation: "Trạng từ chỉ cách thức." },
+            { question: "She is happy ___ she has got a new job.", options: ["and", "because", "because of", "but"], answer: 1, explanation: "Theo sau là một mệnh đề nên dùng \"because\"." },
+            { question: "What does the term 'transition' refer to in a paragraph?", options: ["Words or phrases that help connect ideas between sentences", "The sentence that concludes the paragraph", "The main idea of the paragraph", "The introduction of a new paragraph"], answer: 0, explanation: "'Transition' là các từ/cụm từ chuyển tiếp kết nối ý tưởng." },
+            { question: "Which of the following best describes a 'paragraph unity'?", options: ["A paragraph with multiple paragraphs on the same topic.", "A paragraph where all sentences support and relate to the main idea.", "A paragraph that includes sentences about different topics.", "A paragraph with an introduction and conclusion."], answer: 1, explanation: "Unity nghĩa là mọi câu đều hỗ trợ cho một ý chính duy nhất." },
+            { question: "She _____ go to the office on Saturdays.", options: ["don’t", "isn’t", "doesn’t", "hasn’t"], answer: 2, explanation: "Trợ động từ phủ định ngôi thứ 3 số ít." },
+            { question: "We __________ (have) lunch now.", options: ["is having", "are having", "have", "am having"], answer: 1, explanation: "Hiện tại tiếp diễn với \"now\"." },
+            { question: "We ___ TV when the power ___ out.", options: ["were watching / was going", "watched / went", "were watching / went", "was watching / was going"], answer: 2, explanation: "Hành động đang diễn ra thì bị cắt ngang." },
+            { question: "I __________ (read) a book right now.", options: ["am reading", "are reading", "is reading", "reads"], answer: 0, explanation: "Hiện tại tiếp diễn." },
+            { question: "I have a meeting _______.", options: ["often", "now", "beautifully", "everywhere"], answer: 1, explanation: "Trạng từ chỉ thời gian phù hợp." },
+            { question: "There are ____ apples on the table.", options: ["heavy", "three", "beside", "wonderful"], answer: 1, explanation: "Tính từ chỉ số lượng đếm được." },
+            { question: "She is wearing a/an ____ dress.", options: ["red", "run", "and", "quickly"], answer: 0, explanation: "Tính từ chỉ màu sắc." },
+            { question: "He spoke _______ during the meeting.", options: ["loudly", "often", "yesterday", "here"], answer: 0, explanation: "Trạng từ chỉ cách thức." },
+            { question: "Which of the following sentences best describes a coherent paragraph?", options: ["A paragraph that has random, unrelated sentences", "A paragraph with a single sentence", "A paragraph that introduces multiple topics", "A paragraph where sentences are logically organized and connected"], answer: 3, explanation: "Sự mạch lạc (coherence) yêu cầu các câu kết nối logic." },
+            { question: "Which part of a paragraph typically includes supporting details?", options: ["The introduction", "The body", "The concluding sentence", "The topic sentence"], answer: 1, explanation: "Phần thân đoạn (body) chứa chi tiết hỗ trợ." },
+            { question: "The kids are playing _______.", options: ["careful", "easy", "always", "outside"], answer: 3, explanation: "Trạng từ chỉ nơi chốn." },
+            { question: "There ___ a book on the table.", options: ["has", "are", "is", "have"], answer: 2, explanation: "\"There is\" dùng cho số ít." },
+            { question: "He brought ____ laptop to the meeting.", options: ["tall", "run", "slow", "his"], answer: 3, explanation: "Tính từ sở hữu." },
+            { question: "There ___ not a chair in the room.", options: ["have", "has", "is", "are"], answer: 2, explanation: "Số ít đi với \"is\"." },
+            { question: "____ book on the shelf is mine.", options: ["Beautiful", "This", "Slowly", "Behind"], answer: 1, explanation: "Đại từ chỉ định." },
+            { question: "Which of the following best describes the structure of a well organized paragraph?", options: ["Introduction, body, conclusion", "Hook, details, final thoughts", "Topic sentence, supporting sentences, conclusion", "Introduction, examples, summary"], answer: 2, explanation: "Cấu trúc chuẩn của một đoạn văn: Topic -> Supporting -> Conclusion." },
+            { question: "What is typically found in the introduction of a paragraph?", options: ["Specific examples and evidence", "Transitional phrases", "The main idea of the paragraph", "The concluding remarks"], answer: 2, explanation: "Ý chính thường nằm ở đầu đoạn." },
+            { question: "What role do supporting sentences play in a paragraph?", options: ["They introduce new topics", "They provide evidence or examples for the topic sentence", "They pose questions to the reader", "They summarize the paragraph"], answer: 1, explanation: "Cung cấp bằng chứng hoặc ví dụ minh họa cho câu chủ đề." }
+        ];
+
+        const essayTasksData = [
+            {
+                title: "WRITING TASK 1: Famous Person",
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a famous person you like. Your writing should include the following information: name, age, birthplace, occupation, physical appearance (e.g., height, hair color, eye color), personality (e.g., kind, funny), and why you admire him/her.",
+                questions: [
+                    "Question 1: Write a clear topic sentence.",
+                    "Question 2: Write two supporting ideas.",
+                    "Question 3: List four linking words/phrases you will use in your writing.",
+                    "Question 4: Write a concluding sentence.",
+                    "Question 5: Use all prompts above to write a complete paragraph."
+                ],
+                defaults: [
+                    "Albert Einstein is a famous historical figure whom I admire deeply for his genius and perseverance.",
+                    "First, he was a brilliant physicist with a unique visual thinking style who developed the theory of relativity. Second, he had a striking appearance with wild white hair and a gentle, humorous personality.",
+                    "First, Second, In addition, In conclusion",
+                    "In conclusion, Albert Einstein's intelligence and dedication serve as an everlasting source of inspiration for my academic journey.",
+                    "Albert Einstein is a famous scientist whom I admire deeply for his genius and perseverance. He was born in Germany and worked as a theoretical physicist. First, he was a brilliant physicist with a unique visual thinking style who developed the groundbreaking theory of relativity. Second, he had a striking appearance with wild white hair, warm eyes, and a very gentle, humorous personality. In addition, despite his massive success, he always remained humble and never stopped learning about the universe. His contributions changed the world of science forever. In conclusion, Albert Einstein's intelligence and dedication serve as an everlasting source of inspiration for my academic journey, and I highly respect him."
+                ],
+                keywords: ["einstein", "physicist", "theory", "relativity", "inspiration"],
+                minWords: 120,
+                maxWords: 150
+            },
+            {
+                title: "WRITING TASK 2: Family Member",
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a family member you admire. Your writing should include the following information: name, age, relationship to you, occupation, physical appearance, personality traits, and the reasons why you admire them.",
+                questions: [
+                    "Question 1: Write a clear topic sentence.",
+                    "Question 2: Write two supporting ideas.",
+                    "Question 3: List four linking words/phrases you will use in your writing.",
+                    "Question 4: Write a concluding sentence.",
+                    "Question 5: Use all prompts above to write a complete paragraph."
+                ],
+                defaults: [
+                    "The family member I admire the most is my mother, who is a wonderful and hardworking woman.",
+                    "First, she is forty-five years old, works as a teacher, and has a gentle face with warm brown eyes. Second, she is incredibly patient and kind, always supporting me through difficult times.",
+                    "First, Second, Moreover, In conclusion",
+                    "In conclusion, I am forever grateful for my mother's endless love and sacrifice, and I hope to make her proud.",
+                    "The family member I admire the most is my mother, who is a wonderful and hardworking woman. She is forty-five years old and currently works as a dedicated high school teacher. First, she has a gentle face with warm brown eyes, long black hair, and a reassuring smile that always comforts me. Second, she is incredibly patient and kind, always supporting me through difficult times and teaching me valuable life lessons. Moreover, despite her busy teaching schedule, she always makes time to cook delicious meals and care for our family. She is the strongest person I know. In conclusion, I am forever grateful for my mother's endless love and sacrifice, and I hope to make her proud of my future achievements."
+                ],
+                keywords: ["mother", "gentle", "patient", "teacher", "sacrifice"],
+                minWords: 120,
+                maxWords: 150
+            },
+            {
+                title: "WRITING TASK 3: Best Friend",
+                prompt: "Write a well–organized paragraph (120–150 words) to describe your best friend. Your writing should include the following information: name, age, how you met, occupation or field of study, physical appearance, personality, and why this friendship is important to you.",
+                questions: [
+                    "Question 1: Write a clear topic sentence.",
+                    "Question 2: Write two supporting ideas.",
+                    "Question 3: List four linking words/phrases you will use in your writing.",
+                    "Question 4: Write a concluding sentence.",
+                    "Question 5: Use all prompts above to write a complete paragraph."
+                ],
+                defaults: [
+                    "My best friend is Lan, who was my classmate in high school.",
+                    "First, she is very kind and always helped me with difficult homework when we studied together. Second, she is a funny girl who has a beautiful smile and a great sense of humor.",
+                    "First, Second, In addition, In conclusion",
+                    "In conclusion, I am very happy to have Lan as my best friend, and I hope we will always stay close.",
+                    "My best friend is Lan, who was my classmate in high school. She is 20 years old and she was born in Tra Vinh. Now, she is a student at Tra Vinh University. Lan is a beautiful girl with long black hair, big eyes, and a very kind smile. First, she is very helpful and always helped me with difficult homework when we studied together in high school. Second, she is a funny girl who has a great sense of humor and always makes me laugh. In addition, because we have been friends for a long time, we like to do many activities together such as going to the coffee shop on weekends and watching movies in our free time. In conclusion, I am very happy to have Lan as my best friend, and I hope we will always stay close."
+                ],
+                keywords: ["friend", "high school", "smile", "humor", "close"],
+                minWords: 120,
+                maxWords: 150
+            },
+            {
+                title: "WRITING TASK 4: Inspiring Teacher",
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a teacher who inspired you. Your writing should include the following information: name, the subject they taught, physical appearance, personality (e.g., patient, energetic), their teaching style, and why you appreciate them.",
+                questions: [
+                    "Question 1: Write a clear topic sentence.",
+                    "Question 2: Write two supporting ideas.",
+                    "Question 3: List four linking words/phrases you will use in your writing.",
+                    "Question 4: Write a concluding sentence.",
+                    "Question 5: Use all prompts above to write a complete paragraph."
+                ],
+                defaults: [
+                    "Mr. Minh, my high school English teacher, is the most inspiring educator I have ever met.",
+                    "First, he is a tall man with a neat appearance who always wears a friendly smile in class. Second, he is very patient and energetic, using a fun and interactive teaching style to make English easy to understand.",
+                    "First, Second, Furthermore, To sum up",
+                    "To sum up, I highly appreciate Mr. Minh for his dedication, and he is the reason I love English today.",
+                    "Mr. Minh, my high school English teacher, is the most inspiring educator I have ever met. First, he is a tall man with a neat appearance, short black hair, and he always wears a friendly smile in class. Second, he is very patient and energetic, which makes every student feel comfortable. Furthermore, his teaching style is highly interactive and fun; he often uses games and real-life stories to make difficult English grammar easy to understand. Whenever I made a mistake, he never got angry but gently corrected me and encouraged me to try again. I appreciate him because he gave me the confidence to speak a foreign language. To sum up, I highly appreciate Mr. Minh for his dedication, and he is the reason I love English today."
+                ],
+                keywords: ["teacher", "english", "patient", "interactive", "appreciate"],
+                minWords: 120,
+                maxWords: 150
+            },
+            {
+                title: "WRITING TASK 5: A Neighbor",
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a neighbor you know well. Your writing should include the following information: name, age, how long you have lived near each other, physical appearance, personality (e.g., friendly, helpful), and a small memory or reason why you like them.",
+                questions: [
+                    "Question 1: Write a clear topic sentence.",
+                    "Question 2: Write two supporting ideas.",
+                    "Question 3: List four linking words/phrases you will use in your writing.",
+                    "Question 4: Write a concluding sentence.",
+                    "Question 5: Use all prompts above to write a complete paragraph."
+                ],
+                defaults: [
+                    "Mrs. Hoa is a wonderful neighbor who has lived next to my house for over ten years.",
+                    "First, she is a sixty-year-old retired nurse with short curly hair and a very welcoming face. Second, she is extremely friendly and helpful, often sharing delicious home-cooked food with my family.",
+                    "First, Second, For example, In conclusion",
+                    "In conclusion, Mrs. Hoa is a fantastic neighbor, and I am very lucky to live next to such a caring person.",
+                    "Mrs. Hoa is a wonderful neighbor who has lived next to my house for over ten years. First, she is a sixty-year-old retired nurse with short curly hair, an active build, and a very welcoming face. Second, she is extremely friendly and helpful to everyone in our community. For example, I will always remember the time I was sick, and she kindly cooked a hot bowl of soup and brought it to my room to help me recover. Moreover, she loves gardening and often gives my family beautiful flowers from her backyard. Having a good relationship with neighbors makes life much more pleasant. In conclusion, Mrs. Hoa is a fantastic neighbor, and I am very lucky to live next to such a caring person."
+                ],
+                keywords: ["neighbor", "friendly", "helpful", "caring", "lucky"],
+                minWords: 120,
+                maxWords: 150
+            },
+            {
+                title: "WRITING TASK 6: Talented Athlete",
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a talented athlete you follow. Your writing should include the following information: name, the sport they play, nationality, physical appearance (e.g., build, height), personality (e.g., disciplined, persistent), and why you are a fan of them.",
+                questions: [
+                    "Question 1: Write a clear topic sentence.",
+                    "Question 2: Write two supporting ideas.",
+                    "Question 3: List four linking words/phrases you will use in your writing.",
+                    "Question 4: Write a concluding sentence.",
+                    "Question 5: Use all prompts above to write a complete paragraph."
+                ],
+                defaults: [
+                    "Cristiano Ronaldo is a highly talented Portuguese football player whom I greatly admire.",
+                    "First, he has a very athletic and muscular build, standing at over 1.85 meters tall, which helps him perform excellently on the pitch. Second, he is incredibly disciplined and persistent, always training hard to maintain his top physical condition.",
+                    "First, Second, Moreover, In conclusion",
+                    "In conclusion, Ronaldo's incredible work ethic and success make him a true legend, and I will always be his biggest fan.",
+                    "Cristiano Ronaldo is a highly talented Portuguese football player whom I greatly admire. First, he has a very athletic and muscular build, standing at over 1.85 meters tall, which helps him perform excellently on the football pitch. Second, he is incredibly disciplined and persistent. Even though he has achieved massive success and won many awards, he continues to train harder than anyone else to maintain his top physical condition. Moreover, I am a huge fan of him not only because of his brilliant goal-scoring skills but also because of his generous charity work off the field. He constantly inspires young athletes to pursue their dreams. In conclusion, Ronaldo's incredible work ethic and success make him a true legend, and I will always be his biggest fan."
+                ],
+                keywords: ["athlete", "football", "disciplined", "persistent", "legend"],
+                minWords: 120,
+                maxWords: 150
+            }
+        ];
+
+        const state = {
+            darkMode: true,
+            activeTab: 'dashboard',
+            
+            // MCQ State
+            activeMcqQuestions: [],
+            mcqAnswers: {}, 
+            mcqFlags: {},
+
+            // Essay State
+            currentEssayTasks: [],
+            selectedEssayTaskIndex: 0,
+            essayAnswers: {}
+        };
+
+        function getEl(id) { return document.getElementById(id); }
+
+        function showToast(message, type = 'info') {
+            const container = getEl('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `px-4 py-3 rounded-xl shadow-lg text-xs font-bold text-white transition-all duration-300 transform translate-y-2 opacity-0 flex items-center gap-2 pointer-events-auto bg-zinc-900 border border-zinc-800 dark:border-zinc-700 animate-slideUp`;
+            
+            let icon = '<i class="fa-solid fa-info text-blue-400"></i>';
+            if (type === 'success') icon = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
+            if (type === 'error') icon = '<i class="fa-solid fa-circle-exclamation text-red-400"></i>';
+            
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            container.appendChild(toast);
+            
+            setTimeout(() => { toast.classList.remove('opacity-0', 'translate-y-2'); }, 10);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function toggleDarkMode() {
+            state.darkMode = !state.darkMode;
+            const body = document.body;
+            const themeToggle = getEl('theme-toggle');
+            
+            if (state.darkMode) {
+                body.classList.add('dark', 'bg-[#121212]', 'text-white');
+                body.classList.remove('bg-gray-50', 'text-gray-900');
+                themeToggle.innerHTML = `<svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`;
+            } else {
+                body.classList.remove('dark', 'bg-[#121212]', 'text-white');
+                body.classList.add('bg-gray-50', 'text-gray-900');
+                themeToggle.innerHTML = `<svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>`;
+            }
+        }
+
+        function getShuffledClone(arr) {
+            let clone = JSON.parse(JSON.stringify(arr));
+            for (let i = clone.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [clone[i], clone[j]] = [clone[j], clone[i]];
+            }
+            return clone;
+        }
+
+        function switchView(view) {
+            state.activeTab = view;
+            
+            getEl('view-dashboard').classList.add('hidden');
+            getEl('view-mcq-quiz').classList.add('hidden');
+            getEl('view-essay-quiz').classList.add('hidden');
+            
+            if (view === 'dashboard') {
+                getEl('view-dashboard').classList.remove('hidden');
+            } else if (view === 'mcq') {
+                getEl('view-mcq-quiz').classList.remove('hidden');
+            } else if (view === 'essay') {
+                getEl('view-essay-quiz').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startWritingQuiz(mode) {
+            if (mode === 'mcq') {
+                state.mcqAnswers = {};
+                state.mcqFlags = {};
+                state.activeMcqQuestions = getShuffledClone(writingQuestionsData);
+                
+                getEl('quiz-course-title').innerText = "Foundation to Writing 1 - Trắc Nghiệm";
+                getEl('quiz-course-subtitle').innerText = "Tự động báo điểm và khóa đáp án ngay sau khi nhấp chọn";
+                
+                renderSidebarGrids();
+                renderQuestionsList();
+                updateLiveStats();
+                switchView('mcq');
+            } else if (mode === 'essay') {
+                state.essayAnswers = {};
+                state.currentEssayTasks = getShuffledClone(essayTasksData);
+                
+                state.currentEssayTasks.forEach((task, tIdx) => {
+                    task.questions.forEach((_, qIdx) => {
+                        const key = `${tIdx}_${qIdx}`;
+                        state.essayAnswers[key] = "";
+                    });
+                });
+                
+                populateEssaySelector();
+                loadSelectedEssayTask();
+                switchView('essay');
+            }
+        }
+
+        function handleSelectOption(qIdx, optIdx) {
+            if (state.mcqAnswers[qIdx] !== undefined) return;
+            
+            state.mcqAnswers[qIdx] = optIdx;
+            
+            const qData = state.activeMcqQuestions[qIdx];
+            const correctOpt = qData.answer;
+            const isCorrect = optIdx === correctOpt;
+            
+            const feedbackBadge = getEl(`feedback-badge-${qIdx}`);
+            feedbackBadge.innerHTML = isCorrect 
+                ? `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400">CHÍNH XÁC</span>`
+                : `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-red-800 dark:text-red-400">SAI RỒI</span>`;
+            
+            for (let i = 0; i < qData.options.length; i++) {
+                const optButton = getEl(`opt-${qIdx}-${i}`);
+                const optDot = getEl(`dot-${qIdx}-${i}`);
+                
+                optButton.classList.remove('hover:border-[#005b94]', 'cursor-pointer');
+                optButton.classList.add('cursor-not-allowed');
+                
+                if (i === correctOpt) {
+                    optButton.className = "flex items-center gap-3 p-3.5 rounded-xl border text-xs md:text-sm transition-all select-none border-emerald-500 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400 font-semibold cursor-not-allowed";
+                    optDot.className = "w-5 h-5 rounded-full border flex items-center justify-center shrink-0 border-emerald-500 bg-emerald-500";
+                } else if (i === optIdx) {
+                    optButton.className = "flex items-center gap-3 p-3.5 rounded-xl border text-xs md:text-sm transition-all select-none border-red-500 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-400 font-semibold cursor-not-allowed";
+                    optDot.className = "w-5 h-5 rounded-full border flex items-center justify-center shrink-0 border-red-500 bg-red-500";
+                } else {
+                    optButton.className = "flex items-center gap-3 p-3.5 rounded-xl border text-xs md:text-sm transition-all select-none border-gray-100 dark:border-zinc-850 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-400 dark:text-zinc-600 cursor-not-allowed";
+                    optDot.className = "w-5 h-5 rounded-full border flex items-center justify-center shrink-0 border-gray-200 dark:border-zinc-800";
+                }
+            }
+            
+            const explanationBlock = getEl(`explanation-block-${qIdx}`);
+            explanationBlock.classList.remove('hidden');
+            explanationBlock.classList.add('animate-fadeIn');
+            
+            updateLiveStats();
+            renderSidebarGrids();
+        }
+
+        function toggleFlag(qIdx) {
+            state.mcqFlags[qIdx] = !state.mcqFlags[qIdx];
+            
+            const flagBadge = getEl(`card-flag-badge-${qIdx}`);
+            const flagBtn = getEl(`flag-btn-${qIdx}`);
+            
+            if (state.mcqFlags[qIdx]) {
+                flagBadge.classList.remove('hidden');
+                flagBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20" stroke="currentColor" class="w-4 h-4 text-[#FFCC00]">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                    </svg>
+                    Hủy gắn cờ
+                `;
+            } else {
+                flagBadge.classList.add('hidden');
+                flagBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20" stroke="currentColor" class="w-4 h-4 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                    </svg>
+                    Gắn cờ câu hỏi
+                `;
+            }
+            
+            renderSidebarGrids();
+        }
+
+        function scrollToQuestion(index) {
+            const element = getEl(`question-card-${index}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function renderSidebarGrids() {
+            const pcGrid = getEl('sidebar-mcq-grid');
+            let gridHtml = '';
+            state.activeMcqQuestions.forEach((_, idx) => {
+                const isAnswered = state.mcqAnswers[idx] !== undefined;
+                const isFlagged = state.mcqFlags[idx];
+                
+                let btnStyle = "bg-[#1A1A1A] hover:bg-zinc-850 text-white border-zinc-800";
+                if (isAnswered) {
+                    btnStyle = "bg-[#0472b7] text-white border-transparent hover:bg-[#035d96]";
+                }
+
+                gridHtml += `
+                    <button onclick="scrollToQuestion(${idx})" class="flex items-center justify-between p-2 md:p-2.5 rounded-lg border text-white transition-all duration-150 cursor-pointer text-xs font-bold ${btnStyle}">
+                        <span class="text-left">${idx + 1}</span>
+                        <span class="shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20" fill="none" class="w-3.5 h-3.5 ${isFlagged ? 'text-[#FFCC00] fill-[#FFCC00]' : 'text-zinc-500'}">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.32022 0.577409C5.18374 0.361142 7.07904 0.25 9 0.25C10.921 0.25 12.8163 0.361142 14.6798 0.57741C16.1772 0.751186 17.25 2.03722 17.25 3.50699V19C17.25 19.2599 17.1154 19.5013 16.8943 19.638C16.6732 19.7746 16.3971 19.7871 16.1646 19.6708L9 16.0885L1.83541 19.6708C1.60292 19.7871 1.32681 19.7746 1.1057 19.638C0.884589 19.5013 0.75 19.2599 0.75 19V3.50699C0.75 2.03722 1.82283 0.751186 3.32022 0.577409Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </button>
+                `;
+            });
+            if (pcGrid) pcGrid.innerHTML = gridHtml;
+        }
+
+        function renderQuestionsList() {
+            const container = getEl('mcq-questions-container');
+            let listHtml = '';
+            state.activeMcqQuestions.forEach((q, idx) => {
+                const selectedOpt = state.mcqAnswers[idx];
+                const isAnswered = selectedOpt !== undefined;
+                const isCorrect = isAnswered && selectedOpt === q.answer;
+                const hasFlag = state.mcqFlags[idx];
+
+                listHtml += `
+                    <div id="question-card-${idx}" class="p-4 md:p-6 rounded-xl border shadow-sm transition-all relative bg-white dark:bg-[#1a1a24] text-gray-900 dark:text-white border-gray-200 dark:border-zinc-800/80">
+                        <div id="card-flag-badge-${idx}" class="absolute top-0 right-4 transform -translate-y-1/2 bg-[#FFCC00] text-gray-950 font-bold px-3 py-1 text-[10px] rounded-full flex items-center gap-1 shadow-md z-10 ${hasFlag ? '' : 'hidden'}">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 18 20"><path d="M3.32 0.57c1.86-.21 3.75-.32 5.68-.32 1.92 0 3.81.11 5.68.32 1.5.18 2.57 1.46 2.57 2.93v15.5c0 .25-.13.5-.35.63-.22.14-.5.15-.73.03L9 16.08l-7.16 3.59c-.23.12-.5.11-.73-.03C.88 19.5.75 19.26.75 19V3.5c0-1.47 1.07-2.75 2.57-2.93z"/></svg>
+                            ĐÃ GẮN CỜ
+                        </div>
+
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="font-extrabold text-sm text-[#005b94] dark:text-emerald-400">Câu ${idx + 1}:</span>
+                                <span id="feedback-badge-${idx}">
+                                    ${isAnswered ? (isCorrect ? '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">CHÍNH XÁC</span>' : '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-red-100 text-red-800">SAI RỒI</span>') : ''}
+                                </span>
+                            </div>
+                            <span class="font-bold text-xs text-gray-500 bg-gray-100 dark:bg-zinc-850 px-2.5 py-1 rounded-lg">+1 điểm</span>
+                        </div>
+
+                        <div class="font-bold text-sm md:text-base text-gray-900 dark:text-white mb-4 leading-relaxed">
+                            <span>${q.question}</span>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            ${q.options.map((option, optIdx) => {
+                                const optionLetter = String.fromCharCode(65 + optIdx);
+                                const isThisOptionSelected = selectedOpt === optIdx;
+                                const isThisOptionCorrect = q.answer === optIdx;
+                                
+                                let optionClass = "border-gray-200 dark:border-zinc-800 bg-white dark:bg-[#1a1a24] text-gray-800 dark:text-zinc-200 active:scale-[0.99] hover:border-[#005b94] cursor-pointer";
+                                let dotClass = "border-gray-300 dark:border-zinc-750";
+
+                                if (isAnswered) {
+                                    if (isThisOptionCorrect) {
+                                        optionClass = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-900 dark:text-emerald-400 font-semibold cursor-not-allowed";
+                                        dotClass = "border-emerald-500 bg-emerald-500";
+                                    } else if (isThisOptionSelected) {
+                                        optionClass = "border-red-500 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-400 font-semibold cursor-not-allowed";
+                                        dotClass = "border-red-500 bg-red-500";
+                                    } else {
+                                        optionClass = "border-gray-100 dark:border-zinc-850 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-400 dark:text-zinc-600 cursor-not-allowed";
+                                        dotClass = "border-gray-200 dark:border-zinc-800";
+                                    }
+                                }
+
+                                return `
+                                    <div id="opt-${idx}-${optIdx}" onclick="handleSelectOption(${idx}, ${optIdx})" class="flex items-center gap-3 p-3.5 rounded-xl border text-xs md:text-sm transition-all select-none ${optionClass}">
+                                        <div id="dot-${idx}-${optIdx}" class="w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ${dotClass}">
+                                            ${isThisOptionSelected ? '<div class="w-2.5 h-2.5 rounded-full bg-white"></div>' : ''}
+                                        </div>
+                                        <span class="font-extrabold">${optionLetter}.</span>
+                                        <span class="flex-1 leading-snug">${option}</span>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div id="explanation-block-${idx}" class="mt-4 p-3.5 rounded-xl border border-emerald-200 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-950 dark:text-emerald-400 text-xs md:text-sm ${isAnswered ? '' : 'hidden'}">
+                            <div class="flex items-center gap-2 font-bold mb-1 text-emerald-700 dark:text-emerald-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Đáp án chính xác là: ${String.fromCharCode(65 + q.answer)}
+                            </div>
+                            <p class="leading-relaxed">
+                                <span class="font-bold">Giải thích:</span> ${q.explanation}
+                            </p>
+                        </div>
+
+                        <div class="flex justify-between items-center border-t border-gray-100 dark:border-zinc-800/60 pt-3 mt-4">
+                            <button id="flag-btn-${idx}" onclick="toggleFlag(${idx})" class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#FFCC00] transition-colors cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="${hasFlag ? 'currentColor' : 'none'}" viewBox="0 0 18 20" stroke="currentColor" class="w-4 h-4 ${hasFlag ? 'text-[#FFCC00]' : 'text-gray-400'}">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                </svg>
+                                ${hasFlag ? 'Hủy gắn cờ' : 'Gắn cờ câu hỏi'}
+                            </button>
+                        </div>
+
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = listHtml;
+        }
+
+        function updateLiveStats() {
+            let correct = 0;
+            let answered = 0;
+            
+            state.activeMcqQuestions.forEach((q, idx) => {
+                const userChoice = state.mcqAnswers[idx];
+                if (userChoice !== undefined) {
+                    answered++;
+                    if (userChoice === q.answer) correct++;
+                }
+            });
+            
+            const total = state.activeMcqQuestions.length;
+            
+            const liveMcqEl = getEl('live-mcq-score');
+            if (liveMcqEl) liveMcqEl.innerText = `Đúng: ${correct}/${answered} câu`;
+
+            const statAnsCount = getEl('stat-answered-count');
+            if (statAnsCount) statAnsCount.innerText = `${answered}/${total}`;
+
+            const statCorrCount = getEl('stat-correct-count');
+            if (statCorrCount) statCorrCount.innerText = `${correct}`;
+        }
+
+        function populateEssaySelector() {
+            const select = getEl('essay-task-select');
+            select.innerHTML = state.currentEssayTasks.map((task, idx) => {
+                return `<option value="${idx}">${task.title}</option>`;
+            }).join('');
+        }
+
+        function loadSelectedEssayTask() {
+            const select = getEl('essay-task-select');
+            const taskIdx = parseInt(select.value, 10);
+            state.selectedEssayTaskIndex = taskIdx;
+            
+            const task = state.currentEssayTasks[taskIdx];
+            getEl('essay-task-title').innerText = task.title;
+            getEl('essay-task-prompt').innerText = task.prompt;
+            
+            renderEssayQuestions(task, taskIdx);
+            
+            getEl('essay-grading-panel').innerHTML = `
+                <div class="text-center py-8 text-gray-400 space-y-3">
+                    <svg class="w-12 h-12 text-gray-300 dark:text-zinc-700 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 .364l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    <p class="text-xs font-semibold">Chưa có bài chấm.</p>
+                    <p class="text-[10px] text-gray-500 dark:text-zinc-500 leading-relaxed">Hãy hoàn thành câu trả lời cho cả 5 phần bên trái rồi nhấp chọn "Nộp bài & Chấm điểm Tự động".</p>
+                </div>
+            `;
+        }
+
+        function countWords(str) {
+            if (!str) return 0;
+            const trimmed = str.trim();
+            if (trimmed === "") return 0;
+            return trimmed.split(/\s+/).length;
+        }
+
+        function handleEssayInput(tIdx, qIdx, value) {
+            const key = `${tIdx}_${qIdx}`;
+            state.essayAnswers[key] = value;
+            
+            const count = countWords(value);
+            getEl(`word-count-${qIdx}`).innerText = count;
+
+            const textarea = getEl(`textarea-${qIdx}`);
+            if (textarea) {
+                textarea.classList.remove('text-red-600', 'underline', 'decoration-red-500', 'border-red-500', 'border-emerald-500');
+                textarea.classList.add('text-gray-950', 'dark:text-white', 'border-gray-350', 'dark:border-zinc-800');
+            }
+            const statusLabel = getEl(`status-label-${qIdx}`);
+            if (statusLabel) {
+                statusLabel.innerHTML = `Chưa chấm`;
+            }
+        }
+
+        function applySampleText(qIdx) {
+            const tIdx = state.selectedEssayTaskIndex;
+            const sampleValue = state.currentEssayTasks[tIdx].defaults[qIdx];
+            
+            const textarea = getEl(`textarea-${qIdx}`);
+            textarea.value = sampleValue;
+            handleEssayInput(tIdx, qIdx, sampleValue);
+        }
+
+        function renderEssayQuestions(task, taskIdx) {
+            const container = getEl('essay-subquestions-container');
+            let questionsHtml = '';
+            
+            task.questions.forEach((questionLabel, qIdx) => {
+                const key = `${taskIdx}_${qIdx}`;
+                const currentValue = state.essayAnswers[key] || "";
+                const currentWordCount = countWords(currentValue);
+                
+                const isParagraph = qIdx === 4;
+                const minWordsHint = isParagraph ? " (Yêu cầu 120-150 từ)" : "";
+                
+                questionsHtml += `
+                    <div class="p-4 md:p-6 rounded-xl border shadow-sm relative bg-white dark:bg-[#1a1a24] text-gray-900 dark:text-white border-gray-200 dark:border-zinc-800/80 animate-fadeIn">
+                        
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="font-extrabold text-xs md:text-sm text-emerald-600 dark:text-emerald-400">Câu ${qIdx + 1}: ${isParagraph ? 'ĐOẠN VĂN HOÀN CHỈNH' : 'PHẦN KHAI TRIỂN'}</span>
+                            <div class="flex gap-2">
+                                <button onclick="applySampleText(${qIdx})" class="px-2 py-1 bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-zinc-300 font-bold text-[10px] rounded border border-gray-300 dark:border-zinc-700 transition-colors">
+                                    Nạp bài mẫu
+                                </button>
+                                <button onclick="checkEssayPart(${taskIdx}, ${qIdx})" class="px-2 py-1 bg-[#005b94] hover:bg-[#004775] text-white font-bold text-[10px] rounded shadow transition-colors cursor-pointer">
+                                    Kiểm tra
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="font-bold text-sm text-gray-800 dark:text-zinc-200 mb-3 leading-relaxed">
+                            <span>${questionLabel}</span><span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">${minWordsHint}</span>
+                        </div>
+
+                        <textarea 
+                            id="textarea-${qIdx}"
+                            oninput="handleEssayInput(${taskIdx}, ${qIdx}, this.value)"
+                            placeholder="Nhập câu trả lời của bạn tại đây bằng Tiếng Anh..." 
+                            class="w-full min-h-[90px] ${isParagraph ? 'min-h-[160px]' : ''} p-3 rounded-lg border border-gray-350 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#005b94] bg-gray-50 dark:bg-zinc-900 text-gray-950 dark:text-white font-medium text-xs md:text-sm"
+                        >${currentValue}</textarea>
+
+                        <div class="flex justify-between items-center mt-2 text-xs text-gray-500 font-semibold">
+                            <span>Trạng thái: <span class="text-amber-600" id="status-label-${qIdx}">Chưa chấm</span></span>
+                            <span>Số từ: <span class="text-emerald-600 font-extrabold" id="word-count-${qIdx}">${currentWordCount}</span> từ</span>
+                        </div>
+
+                        <div id="essay-feedback-q-${qIdx}" class="hidden mt-3 p-3 rounded-lg border text-xs leading-relaxed"></div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = questionsHtml;
+        }
+
+        function checkEssayPart(tIdx, qIdx) {
+            const key = `${tIdx}_${qIdx}`;
+            const val = state.essayAnswers[key] || "";
+            const words = countWords(val);
+            const textarea = getEl(`textarea-${qIdx}`);
+            const statusLabel = getEl(`status-label-${qIdx}`);
+            
+            let isValid = true;
+            let errorMsg = "";
+
+            if (words === 0) {
+                isValid = false;
+                errorMsg = "Chưa nhập nội dung.";
+            } else if (qIdx === 0 && words < 5) {
+                isValid = false;
+                errorMsg = "Câu chủ đề quá ngắn (cần > 5 từ).";
+            } else if (qIdx === 1 && words < 15) {
+                isValid = false;
+                errorMsg = "Các ý hỗ trợ quá ngắn (cần > 15 từ).";
+            } else if (qIdx === 2) {
+                const items = val.split(/[\n,;]+/).map(s => s.trim()).filter(s => s.length > 0);
+                let linkedWordsCount = items.length;
+                if(linkedWordsCount < 4) {
+                    const spaceItems = val.split(/\s+/).filter(Boolean);
+                    if(spaceItems.length < 4) {
+                        isValid = false;
+                        errorMsg = "Cần liệt kê ít nhất 4 từ/cụm từ nối.";
+                    }
+                }
+            } else if (qIdx === 3 && words < 5) {
+                isValid = false;
+                errorMsg = "Câu kết luận quá ngắn (cần > 5 từ).";
+            } else if (qIdx === 4) {
+                if (words < 120 || words > 150) {
+                    isValid = false;
+                    errorMsg = `Độ dài không đạt. Số từ: ${words} (Yêu cầu 120-150 từ).`;
+                }
+            }
+
+            if (!isValid) {
+                textarea.classList.add('text-red-600', 'underline', 'decoration-red-500', 'border-red-500');
+                textarea.classList.remove('text-gray-950', 'dark:text-white', 'border-gray-350', 'dark:border-zinc-800');
+                statusLabel.innerHTML = `<span class="text-red-600 font-extrabold">Lỗi: ${errorMsg}</span>`;
+            } else {
+                textarea.classList.remove('text-red-600', 'underline', 'decoration-red-500', 'border-red-500');
+                textarea.classList.add('text-gray-950', 'dark:text-white', 'border-emerald-500');
+                statusLabel.innerHTML = `<span class="text-emerald-600 font-extrabold">Đạt yêu cầu cơ bản</span>`;
+            }
+        }
+
+        function handleGradeEssay() {
+            const tIdx = state.selectedEssayTaskIndex;
+            const task = state.currentEssayTasks[tIdx];
+            
+            const q0 = state.essayAnswers[`${tIdx}_0`] || "";
+            const q1 = state.essayAnswers[`${tIdx}_1`] || "";
+            const q2 = state.essayAnswers[`${tIdx}_2`] || "";
+            const q3 = state.essayAnswers[`${tIdx}_3`] || "";
+            const q4 = state.essayAnswers[`${tIdx}_4`] || "";
+            
+            const isAnyEmpty = [q0, q1, q2, q3, q4].some(x => x.trim() === "");
+            if (isAnyEmpty) {
+                showToast("Bạn cần nhập câu trả lời cho cả 5 câu hỏi thành phần trước khi yêu cầu chấm điểm.");
+                return;
+            }
+            
+            let q0Score = 0, q0Feed = "";
+            if (countWords(q0) < 5) {
+                q0Feed = "✖ Câu quá ngắn (dưới 5 từ). Một câu chủ đề (Topic sentence) chuẩn cần diễn đạt đầy đủ một mệnh đề có nghĩa.";
+            } else {
+                q0Score = 2;
+                q0Feed = "✔ Đạt yêu cầu. Câu chủ đề rõ ràng, nêu bật đối tượng cần mô tả.";
+            }
+            
+            let q1Score = 0, q1Feed = "";
+            if (countWords(q1) < 15) {
+                q1Feed = "✖ Phần khai triển ý cần tối thiểu 15 từ để nêu rõ được ít nhất 2 ý phụ chi tiết.";
+            } else {
+                q1Score = 2;
+                q1Feed = "✔ Đạt yêu cầu. Đã triển khai được các luận cứ phụ để củng cố câu chủ đề.";
+            }
+            
+            let q2Score = 0, q2Feed = "";
+            const cleanedWords = q2.toLowerCase().replace(/[^a-zA-Z\s]/g, " ").split(/\s+/).filter(Boolean);
+            const commonConnectors = ["first", "second", "third", "addition", "conclusion", "moreover", "furthermore", "besides", "consequently", "therefore", "finally", "next", "then"];
+            const matches = cleanedWords.filter(w => commonConnectors.includes(w));
+            const uniqueMatches = [...new Set(matches)];
+            
+            if (uniqueMatches.length < 2) {
+                q2Feed = `✖ Cần liệt kê rõ tối thiểu 2 từ hoặc cụm từ nối khác nhau. Hệ thống chỉ phát hiện được: ${uniqueMatches.join(', ') || 'không có liên từ học thuật nào'}.`;
+            } else {
+                q2Score = 2;
+                q2Feed = `✔ Đạt yêu cầu. Đã xác lập thành công các liên từ định hướng: ${uniqueMatches.join(', ')}.`;
+            }
+            
+            let q3Score = 0, q3Feed = "";
+            const hasConclusionKeyword = /(conclusion|conclude|sum up|all in all|finally|ultimately|reasons)/i.test(q3);
+            if (countWords(q3) < 5) {
+                q3Feed = "✖ Câu kết bài quá ngắn. Cần tóm lược lại cảm nghĩ hoặc ý kiến tổng thể.";
+            } else if (!hasConclusionKeyword) {
+                q3Score = 1.5;
+                q3Feed = "▲ Khá tốt, nhưng câu kết nên mở đầu bằng một trạng từ chỉ kết luận học thuật như: In conclusion, To sum up, Ultimately,...";
+            } else {
+                q3Score = 2;
+                q3Feed = "✔ Đạt yêu cầu. Câu kết luận chính xác, súc tích và hoàn thiện cấu trúc đoạn.";
+            }
+            
+            let q4Score = 0;
+            let q4Feed = [];
+            const q4Words = countWords(q4);
+            
+            let countScore = 0;
+            if (q4Words >= 100 && q4Words <= 180) {
+                countScore = 4;
+                q4Feed.push("✔ Đạt tiêu chuẩn độ dài (100 - 180 từ). Đoạn văn súc tích.");
+            } else if (q4Words >= 80 && q4Words < 100) {
+                countScore = 2.5;
+                q4Feed.push(`▲ Đoạn văn hơi ngắn (${q4Words} từ). Tiêu chuẩn yêu cầu tối thiểu 100 từ.`);
+            } else if (q4Words > 180) {
+                countScore = 3;
+                q4Feed.push(`▲ Đoạn văn hơi dài (${q4Words} từ). Tiêu chuẩn khuyên dùng khoảng 120-150 từ.`);
+            } else {
+                countScore = 1;
+                q4Feed.push(`✖ Độ dài không đạt chuẩn (${q4Words} từ). Hãy điều chỉnh lại lượng từ nằm trong khoảng 120 - 150 từ.`);
+            }
+            
+            let consistencyScore = 0;
+            const cleanText = (t) => t.toLowerCase().replace(/[^a-z0-9]/g, " ").trim();
+            const cleanQ0 = cleanText(q0).substring(0, 15);
+            const cleanQ3 = cleanText(q3).substring(0, 15);
+            const cleanParagraph = cleanText(q4);
+            
+            if (cleanParagraph.includes(cleanQ0) || cleanParagraph.includes(cleanQ3)) {
+                consistencyScore = 4;
+                q4Feed.push("✔ Đạt tính nhất quán: Hệ thống định vị thành công Câu chủ đề (Q1) hoặc Câu kết luận (Q4) đã được tích hợp nhuần nhuyễn vào đoạn văn.");
+            } else {
+                q4Feed.push("✖ Lỗi nhất quán: Đoạn văn hoàn chỉnh không chứa câu chủ đề bạn đã xây dựng ở Q1 hoặc Q4.");
+                consistencyScore = 1;
+            }
+            
+            let keywordBonus = 0;
+            task.keywords.forEach(kw => {
+                if (cleanParagraph.includes(kw)) keywordBonus += 0.5;
+            });
+            
+            q4Score = Math.min(10, countScore + consistencyScore + Math.min(2, keywordBonus));
+            
+            displayIndividualFeedbacks(0, q0Score, 2, q0Feed);
+            displayIndividualFeedbacks(1, q1Score, 2, q1Feed);
+            displayIndividualFeedbacks(2, q2Score, 2, q2Feed);
+            displayIndividualFeedbacks(3, q3Score, 2, q3Feed);
+            displayIndividualFeedbacks(4, q4Score, 10, q4Feed.join("<br/>"));
+            
+            const finalPercent = Math.round(((q0Score + q1Score + q2Score + q3Score + q4Score) / 18) * 100);
+            const passed = finalPercent >= 50;
+            
+            getEl('essay-grading-panel').innerHTML = `
+                <div class="space-y-4 animate-fadeIn">
+                    <div class="text-center p-4 rounded-xl border border-dashed bg-gray-50 dark:bg-[#252530] border-emerald-500/30">
+                        <p class="text-[10px] font-extrabold uppercase text-gray-400 tracking-wider">Điểm tổng thể quy đổi</p>
+                        <h4 class="text-4xl font-black text-emerald-600 dark:text-emerald-400 my-1">${finalPercent}%</h4>
+                        <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] ${passed ? 'bg-emerald-50/20 text-emerald-600 dark:text-emerald-400' : 'bg-red-50/20 text-red-600 dark:text-red-400'}">
+                            ${passed ? 'ĐẠT TIÊU CHUẨN' : 'CHƯA ĐẠT'}
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between border-b border-gray-150 dark:border-[#30303a] pb-1.5">
+                            <span class="text-gray-500 dark:text-gray-400">Câu 1 (Topic Sentence):</span>
+                            <span class="font-bold text-gray-800 dark:text-white">${q0Score}/2 điểm</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-150 dark:border-[#30303a] pb-1.5">
+                            <span class="text-gray-500 dark:text-gray-400">Câu 2 (Supporting Ideas):</span>
+                            <span class="font-bold text-gray-800 dark:text-white">${q1Score}/2 điểm</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-150 dark:border-[#30303a] pb-1.5">
+                            <span class="text-gray-500 dark:text-gray-400">Câu 3 (Linking Words):</span>
+                            <span class="font-bold text-gray-800 dark:text-white">${q2Score}/2 điểm</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-150 dark:border-[#30303a] pb-1.5">
+                            <span class="text-gray-500 dark:text-gray-400">Câu 4 (Concluding Sentence):</span>
+                            <span class="font-bold text-gray-800 dark:text-white">${q3Score}/2 điểm</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-150 dark:border-[#30303a] pb-1.5">
+                            <span class="text-gray-500 dark:text-gray-400">Câu 5 (Complete Paragraph):</span>
+                            <span class="font-bold text-emerald-600 dark:text-emerald-400">${q4Score}/10 điểm</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-lg bg-gray-50 dark:bg-[#1a1a24] text-[10px] text-gray-500 dark:text-gray-400 leading-relaxed border border-gray-150 dark:border-[#30303a]">
+                        <p class="font-bold text-gray-850 dark:text-white mb-1">Khuyến nghị ôn tập:</p>
+                        ${passed 
+                            ? 'Bài viết của bạn đáp ứng tốt tính nhất quán của cấu trúc Topic-Supporting-Concluding Sentence. Hãy lưu giữ cấu trúc này cho bài thi chính thức!' 
+                            : 'Đoạn văn của bạn cần bổ sung các câu thành phần liên quan từ Q1-Q4 hoặc kéo dài/thu ngắn lượng từ để đạt chuẩn.'}
+                    </div>
+
+                    <button onclick="clearEssayGrading()" class="w-full py-2.5 bg-gray-800 hover:bg-gray-750 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer">
+                        Xóa bảng chấm điểm
+                    </button>
+                </div>
+            `;
+            showToast("Đã chấm điểm tự động bài tự luận của bạn!");
+        }
+
+        function displayIndividualFeedbacks(qIdx, score, maxScore, feedText) {
+            const statusLabel = getEl(`status-label-${qIdx}`);
+            const feedbackBox = getEl(`essay-feedback-q-${qIdx}`);
+            
+            const isFullScore = score === maxScore;
+            
+            statusLabel.innerHTML = `<span class="${isFullScore ? 'text-emerald-600' : 'text-amber-600'} font-extrabold">${score}/${maxScore} điểm</span>`;
+            
+            feedbackBox.classList.remove('hidden');
+            feedbackBox.className = `mt-3 p-3 rounded-lg border text-xs leading-relaxed ${isFullScore ? 'bg-emerald-50 border-emerald-200 text-emerald-950 dark:bg-emerald-950/20 dark:border-emerald-900/60 dark:text-emerald-400' : 'bg-amber-50 border-amber-200 text-amber-950 dark:bg-amber-950/20 dark:border-amber-900/60 dark:text-amber-400'}`;
+            feedbackBox.innerHTML = `
+                <p class="font-bold mb-1">${isFullScore ? 'Nhận xét Đạt:' : 'Nhận xét Cần Lưu Ý:'}</p>
+                <p>${feedText}</p>
+            `;
+        }
+
+        function clearEssayGrading() {
+            for (let i = 0; i < 5; i++) {
+                getEl(`status-label-${i}`).innerText = "Chưa chấm";
+                getEl(`essay-feedback-q-${i}`).classList.add('hidden');
+            }
+            loadSelectedEssayTask();
+        }
+
+        function openResetModal() { getEl('modal-reset').classList.remove('hidden'); }
+        function closeResetModal() { getEl('modal-reset').classList.add('hidden'); }
+
+        function openExitModal() { getEl('modal-exit').classList.remove('hidden'); }
+        function closeExitModal() { getEl('modal-exit').classList.add('hidden'); }
+
+        function handleResetSession() {
+            closeResetModal();
+            if (state.activeTab === 'mcq') {
+                state.mcqAnswers = {};
+                state.mcqFlags = {};
+                state.activeMcqQuestions = getShuffledClone(writingQuestionsData);
+                renderSidebarGrids();
+                renderQuestionsList();
+                updateLiveStats();
+                showToast("Đã xáo trộn ngẫu nhiên và làm lại đề trắc nghiệm viết!");
+            } else if (state.activeTab === 'essay') {
+                state.currentEssayTasks = getShuffledClone(essayTasksData);
+                state.essayAnswers = {};
+                state.currentEssayTasks.forEach((task, tIdx) => {
+                    task.questions.forEach((_, qIdx) => {
+                        const key = `${tIdx}_${qIdx}`;
+                        state.essayAnswers[key] = "";
+                    });
+                });
+                populateEssaySelector();
+                loadSelectedEssayTask();
+                showToast("Đã xáo trộn và làm mới toàn bộ đề tài viết tự luận!");
+            } else {
+                state.mcqAnswers = {};
+                state.mcqFlags = {};
+                state.essayAnswers = {};
+                showToast("Đã xóa hoàn toàn dữ liệu ôn tập trên máy.");
+            }
+        }
+
+        function confirmExit() {
+            closeExitModal();
+            switchView('dashboard');
+        }
+
+        window.onload = function() {
+            switchView('dashboard');
+            // Mặc định ở chế độ Dark Mode theo cấu hình trước đó, bạn có thể click nút để thay đổi
+            toggleDarkMode();
+        };
+    </script>
+</body>
+</html>
