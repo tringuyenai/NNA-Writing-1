@@ -59,7 +59,7 @@
 <body class="bg-gray-50 text-gray-900 transition-colors duration-300 min-h-screen flex flex-col">
 
     <!-- APP HEADER -->
-    <header class="sticky top-0 z-40 w-full border-b backdrop-blur bg-white/80 dark:bg-[#15151e]/80 border-gray-200 dark:border-zinc-800/80 transition-colors duration-200">
+    <header class="sticky top-0 z-50 w-full border-b backdrop-blur bg-white/80 dark:bg-[#15151e]/80 border-gray-200 dark:border-zinc-800/80 transition-colors duration-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('dashboard')">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#005b94] to-emerald-500 flex items-center justify-center text-white font-black text-lg shadow-md">
@@ -85,23 +85,8 @@
     <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <!-- VIEW: DASHBOARD -->
-        <div id="view-dashboard" class="space-y-8 animate-fadeIn max-w-3xl mx-auto">
-            <!-- Hero banner card -->
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-[#121b2d] p-6 sm:p-10 text-white shadow-xl text-center">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent)]"></div>
-                <div class="relative z-10 space-y-3">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold tracking-wide uppercase mx-auto">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Chuyên đề Writing
-                    </span>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Cổng Ôn Tập Trực Tuyến & Chấm Điểm AI</h2>
-                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-xl mx-auto">
-                        Hệ thống hỗ trợ phản hồi kết quả trắc nghiệm lập tức và chấm điểm tự luận Heuristic phân tích cấu trúc đoạn văn, giúp bạn củng cố kiến thức nền tảng.
-                    </p>
-                </div>
-            </div>
-
-            <!-- CARD: WRITING (Centered) -->
+        <div id="view-dashboard" class="space-y-8 animate-fadeIn max-w-3xl mx-auto mt-10">
+            <!-- CARD: WRITING (Centered & Simplified) -->
             <div class="group bg-white dark:bg-[#1a1a24] rounded-2xl border border-gray-200 dark:border-zinc-800/80 p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div class="space-y-4 text-center">
                     <div class="flex justify-center items-start mb-2">
@@ -115,11 +100,11 @@
                         <p class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed max-w-md mx-auto">Ôn luyện viết câu thành phần (Topic, Supporting, Concluding) và dựng đoạn văn hoàn chỉnh theo chuẩn học phần Foundation 1.</p>
                     </div>
                 </div>
-                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800/50 grid grid-cols-2 gap-4">
-                    <button onclick="startWritingQuiz('mcq')" class="py-3 rounded-xl bg-[#005b94] hover:bg-[#004775] text-white text-sm font-bold transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
+                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800/50 flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="startWritingQuiz('mcq')" class="flex-1 py-3.5 rounded-xl bg-[#005b94] hover:bg-[#004775] text-white text-sm font-bold transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
                         <i class="fa-solid fa-list-check"></i> Trắc nghiệm Viết
                     </button>
-                    <button onclick="startWritingQuiz('essay')" class="py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
+                    <button onclick="startWritingQuiz('essay')" class="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold transition-all shadow flex items-center justify-center gap-2 cursor-pointer">
                         <i class="fa-solid fa-file-signature"></i> Tự luận & Chấm AI
                     </button>
                 </div>
@@ -128,7 +113,8 @@
 
         <!-- VIEW: MCQ PRACTICE -->
         <div id="view-mcq-quiz" class="hidden animate-fadeIn">
-            <div class="sticky top-16 z-30 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/95 dark:bg-[#1a1a24]/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800/80 shadow-sm">
+            <!-- Fixed action bar -->
+            <div class="sticky top-16 z-40 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/95 dark:bg-[#1a1a24]/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800/80 shadow-md">
                 <div class="space-y-1">
                     <h3 id="quiz-course-title" class="text-sm font-extrabold dark:text-white"></h3>
                     <p id="quiz-course-subtitle" class="text-[10px] text-gray-500 dark:text-zinc-400"></p>
@@ -137,17 +123,17 @@
                     <div class="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-zinc-800 text-xs font-semibold dark:text-white flex-1 sm:flex-none text-center" id="live-mcq-score">
                         Đang thống kê...
                     </div>
-                    <button onclick="openExitModal()" class="px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 text-xs font-bold transition-all cursor-pointer">
-                        Thoát
+                    <button onclick="openExitModal()" class="px-4 py-2.5 rounded-xl bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-xs font-bold transition-all cursor-pointer shadow-sm">
+                        <i class="fa-solid fa-person-walking-arrow-right"></i> Thoát
                     </button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div class="lg:col-span-8 space-y-6" id="mcq-questions-container"></div>
-                <div class="hidden lg:block lg:col-span-4 sticky top-24 space-y-4">
+                <div class="hidden lg:block lg:col-span-4 sticky top-36 space-y-4">
                     <div class="p-5 rounded-2xl bg-white dark:bg-[#1a1a24] border border-gray-200 dark:border-zinc-800/80 shadow-sm space-y-4">
-                        <h4 class="text-xs font-black uppercase tracking-wider dark:text-white">Bảng điều hướng câu hỏi</h4>
+                        <h4 class="text-xs font-black uppercase tracking-wider dark:text-white">Bảng điều hướng</h4>
                         <div class="grid grid-cols-2 gap-3 text-center">
                             <div class="p-3 rounded-xl bg-gray-50 dark:bg-[#15151e]">
                                 <p class="text-[10px] text-gray-400 uppercase font-semibold">Đã làm</p>
@@ -158,12 +144,7 @@
                                 <span class="text-lg font-black text-emerald-600 dark:text-emerald-400" id="stat-correct-count">0</span>
                             </div>
                         </div>
-                        <div class="grid grid-cols-5 gap-2 max-h-56 overflow-y-auto pr-1" id="sidebar-mcq-grid"></div>
-                        <div class="pt-4 border-t border-gray-100 dark:border-zinc-800/50">
-                            <button onclick="openResetModal()" class="w-full py-2.5 bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-950/40 text-xs font-bold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-rotate-right"></i> Làm lại & Xáo trộn đề
-                            </button>
-                        </div>
+                        <div class="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto pr-1 custom-scrollbar" id="sidebar-mcq-grid"></div>
                     </div>
                 </div>
             </div>
@@ -171,17 +152,24 @@
 
         <!-- VIEW: ESSAY PRACTICE -->
         <div id="view-essay-quiz" class="hidden animate-fadeIn space-y-6">
-            <div class="sticky top-16 z-30 flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-white/95 dark:bg-[#1a1a24]/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800/80 shadow-sm">
-                <div class="flex items-center gap-3">
-                    <span id="essay-task-select-label" class="text-xs font-extrabold text-gray-500 dark:text-zinc-400 uppercase shrink-0">Chọn Đề tài:</span>
-                    <select id="essay-task-select" onchange="loadSelectedEssayTask()" class="bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white border border-transparent hover:border-[#005b94] rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-[#005b94] cursor-pointer"></select>
+            <!-- Fixed action bar -->
+            <div class="sticky top-16 z-40 flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-white/95 dark:bg-[#1a1a24]/95 backdrop-blur-md border border-gray-200 dark:border-zinc-800/80 shadow-md">
+                <div class="flex flex-col gap-3 flex-1">
+                    <div class="flex items-center gap-3">
+                        <span id="essay-task-select-label" class="text-xs font-extrabold text-gray-500 dark:text-zinc-400 uppercase shrink-0 w-24">Đề tài:</span>
+                        <select id="essay-task-select" onchange="loadSelectedEssayTask()" class="w-full max-w-sm bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white border border-gray-200 dark:border-zinc-700 hover:border-[#005b94] rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-[#005b94] cursor-pointer shadow-inner"></select>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-extrabold text-[#005b94] dark:text-sky-400 uppercase shrink-0 w-24">Gợi ý bài:</span>
+                        <select id="custom-topic-select" onchange="generateCustomHints()" class="w-full max-w-sm bg-sky-50 dark:bg-sky-950/30 text-[#005b94] dark:text-sky-300 border border-sky-200 dark:border-sky-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-[#005b94] cursor-pointer shadow-inner"></select>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 self-end md:self-auto">
-                    <button onclick="handleGradeEssay()" class="px-4 py-2.5 rounded-xl bg-[#005b94] hover:bg-[#004775] text-white text-xs font-black transition-all shadow-md flex items-center gap-1.5 cursor-pointer">
+                <div class="flex items-center gap-2 self-end md:self-auto shrink-0">
+                    <button onclick="handleGradeEssay()" class="px-4 py-3 rounded-xl bg-[#005b94] hover:bg-[#004775] text-white text-xs font-black transition-all shadow-md flex items-center gap-1.5 cursor-pointer">
                         <i class="fa-solid fa-calculator"></i> Nộp bài & Chấm AI
                     </button>
-                    <button onclick="openExitModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 text-xs font-bold transition-all cursor-pointer">
-                        Thoát
+                    <button onclick="openExitModal()" class="px-4 py-3 rounded-xl bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-xs font-bold transition-all cursor-pointer shadow-sm">
+                        <i class="fa-solid fa-person-walking-arrow-right"></i> Thoát
                     </button>
                 </div>
             </div>
@@ -190,15 +178,17 @@
                 <div class="lg:col-span-8 space-y-6">
                     <div class="p-6 rounded-2xl bg-[#121b2d] text-white space-y-3 shadow-md relative overflow-hidden">
                         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent)]"></div>
-                        <span class="inline-block px-2 py-0.5 bg-[#005b94] text-white rounded font-bold text-[8px] uppercase tracking-wider" id="essay-task-title">Đang tải...</span>
+                        <span class="inline-block px-2 py-0.5 bg-[#005b94] text-white rounded font-bold text-[10px] uppercase tracking-wider shadow" id="essay-task-title">Đang tải...</span>
                         <h3 class="text-lg font-extrabold leading-relaxed" id="essay-task-prompt"></h3>
-                        <p class="text-[10px] text-zinc-400 font-medium">Bấm "Nạp bài mẫu" ở từng câu thành phần để tham khảo đáp án tiêu chuẩn.</p>
+                        <p class="text-xs text-emerald-400 font-semibold italic mt-2"><i class="fa-solid fa-lightbulb"></i> Mẹo: Chọn "Gợi ý bài" ở thanh công cụ phía trên, sau đó bấm "Nạp bài mẫu theo chủ đề" ở từng câu để tham khảo cách viết.</p>
                     </div>
                     <div class="space-y-6" id="essay-subquestions-container"></div>
                 </div>
-                <div class="lg:col-span-4 sticky top-24 space-y-4">
+                <div class="lg:col-span-4 sticky top-44 space-y-4">
                     <div class="p-5 rounded-2xl bg-white dark:bg-[#1a1a24] border border-gray-200 dark:border-zinc-800/80 shadow-sm space-y-4">
-                        <h4 class="text-xs font-black uppercase tracking-wider dark:text-white">Báo cáo chấm điểm tự động</h4>
+                        <h4 class="text-xs font-black uppercase tracking-wider text-[#005b94] dark:text-emerald-400 flex items-center gap-2">
+                            <i class="fa-solid fa-robot"></i> Báo cáo chấm điểm AI
+                        </h4>
                         <div id="essay-grading-panel"></div>
                     </div>
                 </div>
@@ -207,7 +197,6 @@
 
     </main>
 
-    <!-- TOASTS & MODALS -->
     <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <div id="modal-reset" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -256,186 +245,101 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
+        // FULL 47 MCQ QUESTIONS
         const writingQuestionsData = [
-            { question: "She has a beautiful ___.", options: ["smiled", "smile", "smiles", "smiling"], answer: 1, explanation: "Đáp án đúng là: smile. Vì: \"Smile\" là một danh từ chỉ nụ cười." },
-            { question: "He ___ his homework before dinner.", options: ["doing", "did", "do", "does"], answer: 1, explanation: "Đáp án đúng là: did. Dùng quá khứ đơn vì hành động xảy ra trước một thời điểm trong quá khứ." },
-            { question: "I usually _____ breakfast at 7 AM.", options: ["having", "had", "have", "has"], answer: 2, explanation: "Đáp án đúng là: have. Đối với chủ ngữ \"I,\" động từ ở thì hiện tại đơn không thay đổi hình thức." },
-            { question: "While we ______ (walk) in the park, it suddenly ______ (start) to rain.", options: ["were walking / was starting", "walked / was starting", "walked / started", "were walking / started"], answer: 3, explanation: "\"were walking\" diễn tả hành động đang xảy ra thì \"started\" diễn tả hành động khác xen vào." },
-            { question: "When I ______ (arrive) at the station, the train ______ (still/be) there.", options: ["was arriving / still was", "was arriving / still being", "arrived / was still being", "arrived / was still"], answer: 3, explanation: "Đáp án đúng là: arrived / was still." },
-            { question: "They __________ (not / play) in the park.", options: ["isn't playing", "are not playing", "am not playing", "is not playing"], answer: 1, explanation: "\"They\" đi với \"are\", và phủ định là \"are not\"." },
-            { question: "_____ they understand the instructions?", options: ["Is", "Are", "Do", "Does"], answer: 2, explanation: "Chủ ngữ số nhiều \"they\" sử dụng \"do\" để đặt câu hỏi hiện tại đơn." },
-            { question: "__________ she __________ (watch) TV at the moment?", options: ["Is / watching", "Are / watching", "Am / watching", "Is / watches"], answer: 0, explanation: "Dấu hiệu \"at the moment\" yêu cầu thì hiện tại tiếp diễn." },
-            { question: "She _____ to the gym every day.", options: ["goes", "is going", "go", "went"], answer: 0, explanation: "Dấu hiệu \"every day\" yêu cầu thì hiện tại đơn." },
-            { question: "They _____ a lot of books.", options: ["readed", "reads", "are reading", "read"], answer: 3, explanation: "Chủ ngữ \"They\" động từ không chia (giữ nguyên)." },
-            { question: "While I ______ (cook), my sister ______ (set) the table.", options: ["cooked / was setting", "was cooking / set", "cooked / set", "was cooking / was setting"], answer: 3, explanation: "Hai hành động đang diễn ra cùng lúc trong quá khứ." },
-            { question: "My brother _____ his homework every evening.", options: ["does", "doing", "do", "did"], answer: 0, explanation: "Dấu hiệu \"every evening\" yêu cầu hiện tại đơn." },
-            { question: "I ______ (watch) TV when my mom ______ (call) me for dinner.", options: ["watched / was calling", "watched / called", "was watching / was calling", "was watching / called"], answer: 3, explanation: "Hành động đang diễn ra (quá khứ tiếp diễn) thì hành động khác xen vào (quá khứ đơn)." },
-            { question: "____ is on the table.", options: ["Apple", "The", "Quickly", "Her"], answer: 0, explanation: "\"Apple\" là danh từ đóng vai trò làm chủ ngữ." },
-            { question: "She ______ (not/see) the movie last night because she ______ (study) for the exam.", options: ["didn't see / studied", "wasn't seeing / was studying", "didn't see / was studying", "wasn't seeing / studied"], answer: 2, explanation: "Quá khứ đơn phủ định và quá khứ tiếp diễn diễn tả lý do đang xảy ra." },
-            { question: "What ______ (you/do) when the accident ______ (happen)?", options: ["were you doing / happened", "did you do / was happening", "did you do / happened", "were you doing / was happening"], answer: 0, explanation: "Hỏi về hành động đang xảy ra khi một sự kiện khác xen vào." },
-            { question: "She has ____ books in her bag.", options: ["much", "sings", "fast", "many"], answer: 3, explanation: "\"Many\" là tính từ chỉ số lượng đếm được." },
-            { question: "There ___ many students in the classroom.", options: ["is", "are", "have", "has"], answer: 1, explanation: "\"There are\" dùng cho danh từ số nhiều." },
-            { question: "Is ___ any milk in the fridge?", options: ["they", "there", "it", "are"], answer: 1, explanation: "Cấu trúc \"Is there\"." },
-            { question: "The ____ cat is sleeping.", options: ["quickly", "tired", "with", "loudly"], answer: 1, explanation: "\"Tired\" là tính từ miêu tả danh từ." },
-            { question: "There ___ no books on the shelf.", options: ["were", "are", "is", "was"], answer: 1, explanation: "\"There are\" dùng cho \"no books\" (số nhiều)." },
-            { question: "She danced _______ at the party.", options: ["there", "rarely", "tomorrow", "beautifully"], answer: 3, explanation: "Trạng từ chỉ cách thức bổ nghĩa cho động từ." },
-            { question: "He is a ____ boy.", options: ["quickly", "quietly", "run", "tall"], answer: 3, explanation: "Tính từ đứng trước danh từ." },
-            { question: "I am late because ___ the traffic jam.", options: ["from", "of", "about", "for"], answer: 1, explanation: "Cụm giới từ \"because of\" đi với danh từ/cụm danh từ." },
-            { question: "She will visit us _______.", options: ["soon", "loudly", "yesterday", "rarely"], answer: 0, explanation: "Trạng từ chỉ thời gian trong tương lai." },
-            { question: "The cat moved _______ across the room.", options: ["soon", "always", "silently", "everywhere"], answer: 2, explanation: "Trạng từ chỉ cách thức." },
-            { question: "She is happy ___ she has got a new job.", options: ["and", "because", "because of", "but"], answer: 1, explanation: "Theo sau là một mệnh đề nên dùng \"because\"." },
-            { question: "What does the term 'transition' refer to in a paragraph?", options: ["Words or phrases that help connect ideas between sentences", "The sentence that concludes the paragraph", "The main idea of the paragraph", "The introduction of a new paragraph"], answer: 0, explanation: "'Transition' là các từ/cụm từ chuyển tiếp kết nối ý tưởng." },
-            { question: "Which of the following best describes a 'paragraph unity'?", options: ["A paragraph with multiple paragraphs on the same topic.", "A paragraph where all sentences support and relate to the main idea.", "A paragraph that includes sentences about different topics.", "A paragraph with an introduction and conclusion."], answer: 1, explanation: "Unity nghĩa là mọi câu đều hỗ trợ cho một ý chính duy nhất." },
-            { question: "She _____ go to the office on Saturdays.", options: ["don’t", "isn’t", "doesn’t", "hasn’t"], answer: 2, explanation: "Trợ động từ phủ định ngôi thứ 3 số ít." },
-            { question: "We __________ (have) lunch now.", options: ["is having", "are having", "have", "am having"], answer: 1, explanation: "Hiện tại tiếp diễn với \"now\"." },
-            { question: "We ___ TV when the power ___ out.", options: ["were watching / was going", "watched / went", "were watching / went", "was watching / was going"], answer: 2, explanation: "Hành động đang diễn ra thì bị cắt ngang." },
-            { question: "I __________ (read) a book right now.", options: ["am reading", "are reading", "is reading", "reads"], answer: 0, explanation: "Hiện tại tiếp diễn." },
-            { question: "I have a meeting _______.", options: ["often", "now", "beautifully", "everywhere"], answer: 1, explanation: "Trạng từ chỉ thời gian phù hợp." },
-            { question: "There are ____ apples on the table.", options: ["heavy", "three", "beside", "wonderful"], answer: 1, explanation: "Tính từ chỉ số lượng đếm được." },
-            { question: "She is wearing a/an ____ dress.", options: ["red", "run", "and", "quickly"], answer: 0, explanation: "Tính từ chỉ màu sắc." },
-            { question: "He spoke _______ during the meeting.", options: ["loudly", "often", "yesterday", "here"], answer: 0, explanation: "Trạng từ chỉ cách thức." },
-            { question: "Which of the following sentences best describes a coherent paragraph?", options: ["A paragraph that has random, unrelated sentences", "A paragraph with a single sentence", "A paragraph that introduces multiple topics", "A paragraph where sentences are logically organized and connected"], answer: 3, explanation: "Sự mạch lạc (coherence) yêu cầu các câu kết nối logic." },
-            { question: "Which part of a paragraph typically includes supporting details?", options: ["The introduction", "The body", "The concluding sentence", "The topic sentence"], answer: 1, explanation: "Phần thân đoạn (body) chứa chi tiết hỗ trợ." },
-            { question: "The kids are playing _______.", options: ["careful", "easy", "always", "outside"], answer: 3, explanation: "Trạng từ chỉ nơi chốn." },
-            { question: "There ___ a book on the table.", options: ["has", "are", "is", "have"], answer: 2, explanation: "\"There is\" dùng cho số ít." },
-            { question: "He brought ____ laptop to the meeting.", options: ["tall", "run", "slow", "his"], answer: 3, explanation: "Tính từ sở hữu." },
-            { question: "There ___ not a chair in the room.", options: ["have", "has", "is", "are"], answer: 2, explanation: "Số ít đi với \"is\"." },
-            { question: "____ book on the shelf is mine.", options: ["Beautiful", "This", "Slowly", "Behind"], answer: 1, explanation: "Đại từ chỉ định." },
-            { question: "Which of the following best describes the structure of a well organized paragraph?", options: ["Introduction, body, conclusion", "Hook, details, final thoughts", "Topic sentence, supporting sentences, conclusion", "Introduction, examples, summary"], answer: 2, explanation: "Cấu trúc chuẩn của một đoạn văn: Topic -> Supporting -> Conclusion." },
-            { question: "What is typically found in the introduction of a paragraph?", options: ["Specific examples and evidence", "Transitional phrases", "The main idea of the paragraph", "The concluding remarks"], answer: 2, explanation: "Ý chính thường nằm ở đầu đoạn." },
-            { question: "What role do supporting sentences play in a paragraph?", options: ["They introduce new topics", "They provide evidence or examples for the topic sentence", "They pose questions to the reader", "They summarize the paragraph"], answer: 1, explanation: "Cung cấp bằng chứng hoặc ví dụ minh họa cho câu chủ đề." }
+            { question: "She has a beautiful ___.", options: ["smiled", "smile", "smiles", "smiling"], answer: 1, explanation: "Đáp án đúng là: smile. Vì: \"Smile\" là một danh từ chỉ nụ cười. Các từ còn lại là động từ hoặc hình thức không đúng của danh từ." },
+            { question: "He ___ his homework before dinner.", options: ["doing", "did", "do", "does"], answer: 1, explanation: "Đáp án đúng là: did. Vì: \"Did\" là dạng quá khứ của \"do\". Câu này dùng quá khứ đơn vì hành động xảy ra trước một thời điểm trong quá khứ (\"before dinner\")." },
+            { question: "I usually _____ breakfast at 7 AM.", options: ["having", "had", "have", "has"], answer: 2, explanation: "Đáp án đúng là: have. Vì: Đối với chủ ngữ \"I,\" động từ ở thì hiện tại đơn không thay đổi hình thức (không thêm \"s\")." },
+            { question: "While we ______ (walk) in the park, it suddenly ______ (start) to rain.", options: ["were walking / was starting", "walked / was starting", "walked / started", "were walking / started"], answer: 3, explanation: "Đáp án đúng là: were walking / started. Vì: <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>were walking</mark> (quá khứ tiếp diễn) diễn tả hành động đang xảy ra thì <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>started</mark> (quá khứ đơn) diễn tả hành động khác xen vào." },
+            { question: "When I ______ (arrive) at the station, the train ______ (still/be) there.", options: ["was arriving / still was", "was arriving / still being", "arrived / was still being", "arrived / was still"], answer: 3, explanation: "Đáp án đúng là: arrived / was still. Vì: \"arrived\" (quá khứ đơn) diễn tả hành động đã xảy ra, và \"was still\" (quá khứ đơn) diễn tả trạng thái vẫn đang tiếp diễn tại thời điểm đó." },
+            { question: "They __________ (not / play) in the park.", options: ["isn't playing", "are not playing", "am not playing", "is not playing"], answer: 1, explanation: "Đáp án đúng là: are not playing. Vì: \"They\" đi với \"are\", và phủ định là \"are not\". Động từ \"play\" thêm \"-ing\" thành \"playing\"." },
+            { question: "_____ they understand the instructions?", options: ["Is", "Are", "Do", "Does"], answer: 2, explanation: "Đáp án đúng là: Do. Vì: Đối với chủ ngữ số nhiều \"they,\" sử dụng \"do\" để đặt câu hỏi trong thì hiện tại đơn." },
+            { question: "__________ she __________ (watch) TV at the moment?", options: ["Is / watching", "Are / watching", "Am / watching", "Is / watches"], answer: 0, explanation: "Đáp án đúng là: Is / watching. Vì: Trong câu hỏi với chủ ngữ \"she\", ta dùng \"Is\". Dấu hiệu <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>at the moment</mark> chỉ thì hiện tại tiếp diễn." },
+            { question: "She _____ to the gym every day.", options: ["goes", "is going", "go", "went"], answer: 0, explanation: "Đáp án đúng là: goes. Vì: Dấu hiệu <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>every day</mark> yêu cầu thì hiện tại đơn và thêm \"es\" vào động từ." },
+            { question: "They _____ a lot of books.", options: ["readed", "reads", "are reading", "read"], answer: 3, explanation: "Đáp án đúng là: read. Vì: Đối với chủ ngữ \"They,\" động từ ở thì hiện tại đơn không thay đổi hình thức." },
+            { question: "While I ______ (cook), my sister ______ (set) the table.", options: ["cooked / was setting", "was cooking / set", "cooked / set", "was cooking / was setting"], answer: 3, explanation: "Đáp án đúng là: was cooking / was setting. Vì: Cả hai đều là quá khứ tiếp diễn, chỉ <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>hai hành động đang diễn ra cùng lúc</mark> trong quá khứ." },
+            { question: "My brother _____ his homework every evening.", options: ["does", "doing", "do", "did"], answer: 0, explanation: "Đáp án đúng là: does. Vì: Đối với chủ ngữ số ít, động từ cần chia theo thì hiện tại đơn." },
+            { question: "I ______ (watch) TV when my mom ______ (call) me for dinner.", options: ["watched / was calling", "watched / called", "was watching / was calling", "was watching / called"], answer: 3, explanation: "Đáp án đúng là: was watching / called. Vì: <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>was watching</mark> (hành động đang diễn ra) khi <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>called</mark> (hành động xen vào)." },
+            { question: "____ is on the table.", options: ["Apple", "The", "Quickly", "Her"], answer: 0, explanation: "Đáp án đúng là: Apple. Vì: \"Apple\" là danh từ đóng vai trò làm chủ ngữ của câu." },
+            { question: "She ______ (not/see) the movie last night because she ______ (study) for the exam.", options: ["didn't see / studied", "wasn't seeing / was studying", "didn't see / was studying", "wasn't seeing / studied"], answer: 2, explanation: "Đáp án đúng là: didn't see / was studying. Vì: \"Didn't see\" là quá khứ đơn, còn \"Was studying\" diễn tả <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>lý do đang xảy ra</mark> tại thời điểm đó." },
+            { question: "What ______ (you/do) when the accident ______ (happen)?", options: ["were you doing / happened", "did you do / was happening", "did you do / happened", "were you doing / was happening"], answer: 0, explanation: "Đáp án đúng là: were you doing / happened. Vì: Hỏi về hành động đang xảy ra (QK tiếp diễn) khi một sự kiện khác xen vào (QK đơn)." },
+            { question: "She has ____ books in her bag.", options: ["much", "sings", "fast", "many"], answer: 3, explanation: "Đáp án đúng là: many. Vì: \"Many\" là tính từ chỉ lượng dùng cho <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>danh từ đếm được số nhiều (books)</mark>." },
+            { question: "There ___ many students in the classroom.", options: ["is", "are", "have", "has"], answer: 1, explanation: "Đáp án đúng là: are. Vì: \"There are\" dùng cho danh từ số nhiều \"many students\"." },
+            { question: "Is ___ any milk in the fridge?", options: ["they", "there", "it", "are"], answer: 1, explanation: "Đáp án đúng là: there. Vì: Đây là cấu trúc đảo ngữ của <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>There is</mark> cho câu hỏi." },
+            { question: "The ____ cat is sleeping.", options: ["quickly", "tired", "with", "loudly"], answer: 1, explanation: "Đáp án đúng là: tired. Vì: Cần một <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>tính từ miêu tả</mark> đứng trước danh từ \"cat\"." },
+            { question: "There ___ no books on the shelf.", options: ["were", "are", "is", "was"], answer: 1, explanation: "Đáp án đúng là: are. Vì: \"There are\" được dùng cho danh từ số nhiều \"no books\"." },
+            { question: "She danced _______ at the party.", options: ["there", "rarely", "tomorrow", "beautifully"], answer: 3, explanation: "Đáp án đúng là: beautifully. Vì: Cần một <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>trạng từ chỉ cách thức</mark> bổ nghĩa cho động từ \"danced\"." },
+            { question: "He is a ____ boy.", options: ["quickly", "quietly", "run", "tall"], answer: 3, explanation: "Đáp án đúng là: tall. Vì: \"Tall\" là tính từ bổ nghĩa cho danh từ \"boy\"." },
+            { question: "I am late because ___ the traffic jam.", options: ["from", "of", "about", "for"], answer: 1, explanation: "Đáp án đúng là: of. Vì: <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>Because of</mark> được sử dụng đi kèm với một cụm danh từ (the traffic jam)." },
+            { question: "She will visit us _______.", options: ["soon", "loudly", "yesterday", "rarely"], answer: 0, explanation: "Đáp án đúng là: soon. Vì: Cần trạng từ chỉ thời gian trong tương lai phù hợp với \"will visit\"." },
+            { question: "The cat moved _______ across the room.", options: ["soon", "always", "silently", "everywhere"], answer: 2, explanation: "Đáp án đúng là: silently. Vì: \"Silently\" là trạng từ mô tả <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>cách thức</mark> con mèo di chuyển." },
+            { question: "She is happy ___ she has got a new job.", options: ["and", "because", "because of", "but"], answer: 1, explanation: "Đáp án đúng là: because. Vì: Theo sau là một mệnh đề (có chủ ngữ + động từ) nên dùng <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>because</mark>." },
+            { question: "What does the term 'transition' refer to in a paragraph?", options: ["Words or phrases that help connect ideas between sentences", "The sentence that concludes the paragraph", "The main idea of the paragraph", "The introduction of a new paragraph"], answer: 0, explanation: "Đáp án đúng là: Words or phrases that help connect ideas between sentences. Vì: 'Transition' (chuyển tiếp) là các từ dùng để <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>kết nối ý tưởng</mark>." },
+            { question: "Which of the following best describes a 'paragraph unity'?", options: ["A paragraph with multiple paragraphs on the same topic.", "A paragraph where all sentences support and relate to the main idea.", "A paragraph that includes sentences about different topics.", "A paragraph with an introduction and conclusion."], answer: 1, explanation: "Đáp án đúng là: A paragraph where all sentences support and relate to the main idea. Vì: Tính thống nhất (unity) nghĩa là <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>tất cả các câu đều hỗ trợ cho một ý chính</mark>." },
+            { question: "She _____ go to the office on Saturdays.", options: ["don’t", "isn’t", "doesn’t", "hasn’t"], answer: 2, explanation: "Đáp án đúng là: doesn’t. Vì: Với chủ ngữ số ít \"She\", ta dùng trợ động từ phủ định \"does not\" (doesn't)." },
+            { question: "We __________ (have) lunch now.", options: ["is having", "are having", "have", "am having"], answer: 1, explanation: "Đáp án đúng là: are having. Vì: Dấu hiệu <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>now</mark> yêu cầu chia thì hiện tại tiếp diễn." },
+            { question: "We ___ TV when the power ___ out.", options: ["were watching / was going", "watched / went", "were watching / went", "was watching / was going"], answer: 2, explanation: "Đáp án đúng là: were watching / went. Vì: Hành động đang diễn ra (were watching) thì sự kiện khác đột ngột cắt ngang (went out)." },
+            { question: "I __________ (read) a book right now.", options: ["am reading", "are reading", "is reading", "reads"], answer: 0, explanation: "Đáp án đúng là: am reading. Vì: Dấu hiệu <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>right now</mark> yêu cầu cấu trúc hiện tại tiếp diễn." },
+            { question: "I have a meeting _______.", options: ["often", "now", "beautifully", "everywhere"], answer: 1, explanation: "Đáp án đúng là: now. Vì: Trạng từ chỉ thời gian phù hợp để xác định thời điểm." },
+            { question: "There are ____ apples on the table.", options: ["heavy", "three", "beside", "wonderful"], answer: 1, explanation: "Đáp án đúng là: three. Vì: Tính từ chỉ số lượng đếm được phù hợp đứng trước danh từ số nhiều \"apples\"." },
+            { question: "She is wearing a/an ____ dress.", options: ["red", "run", "and", "quickly"], answer: 0, explanation: "Đáp án đúng là: red. Vì: Tính từ chỉ màu sắc bổ nghĩa cho danh từ \"dress\"." },
+            { question: "He spoke _______ during the meeting.", options: ["loudly", "often", "yesterday", "here"], answer: 0, explanation: "Đáp án đúng là: loudly. Vì: Trạng từ chỉ cách thức mô tả việc anh ấy nói như thế nào." },
+            { question: "Which of the following sentences best describes a coherent paragraph?", options: ["A paragraph that has random, unrelated sentences", "A paragraph with a single sentence", "A paragraph that introduces multiple topics", "A paragraph where sentences are logically organized and connected"], answer: 3, explanation: "Đáp án đúng là: A paragraph where sentences are logically organized and connected. Vì: Sự mạch lạc (coherence) đòi hỏi các câu phải được <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>sắp xếp logic và kết nối</mark> chặt chẽ." },
+            { question: "Which part of a paragraph typically includes supporting details?", options: ["The introduction", "The body", "The concluding sentence", "The topic sentence"], answer: 1, explanation: "Đáp án đúng là: The body. Vì: Phần <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>thân đoạn (body)</mark> chứa các chi tiết để giải thích ý chính." },
+            { question: "The kids are playing _______.", options: ["careful", "easy", "always", "outside"], answer: 3, explanation: "Đáp án đúng là: outside. Vì: Trạng từ chỉ địa điểm cho biết nơi hành động đang diễn ra." },
+            { question: "There ___ a book on the table.", options: ["has", "are", "is", "have"], answer: 2, explanation: "Đáp án đúng là: is. Vì: Cấu trúc \"There is\" dùng cho <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>danh từ số ít</mark>." },
+            { question: "He brought ____ laptop to the meeting.", options: ["tall", "run", "slow", "his"], answer: 3, explanation: "Đáp án đúng là: his. Vì: Tính từ sở hữu chỉ món đồ thuộc về anh ấy." },
+            { question: "There ___ not a chair in the room.", options: ["have", "has", "is", "are"], answer: 2, explanation: "Đáp án đúng là: is. Vì: Câu phủ định với danh từ số ít \"a chair\"." },
+            { question: "____ book on the shelf is mine.", options: ["Beautiful", "This", "Slowly", "Behind"], answer: 1, explanation: "Đáp án đúng là: This. Vì: Đại từ chỉ định dùng để xác định cụ thể cuốn sách." },
+            { question: "Which of the following best describes the structure of a well organized paragraph?", options: ["Introduction, body, conclusion", "Hook, details, final thoughts", "Topic sentence, supporting sentences, conclusion", "Introduction, examples, summary"], answer: 2, explanation: "Đáp án đúng là: Topic sentence, supporting sentences, conclusion. Vì: Đây là <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>cấu trúc chuẩn 3 phần</mark> của một đoạn văn." },
+            { question: "What is typically found in the introduction of a paragraph?", options: ["Specific examples and evidence", "Transitional phrases", "The main idea of the paragraph", "The concluding remarks"], answer: 2, explanation: "Đáp án đúng là: The main idea of the paragraph. Vì: Phần mở đầu luôn chứa câu chủ đề nêu bật ý chính." },
+            { question: "What role do supporting sentences play in a paragraph?", options: ["They introduce new topics", "They provide evidence or examples for the topic sentence", "They pose questions to the reader", "They summarize the paragraph"], answer: 1, explanation: "Đáp án đúng là: They provide evidence or examples. Vì: Các câu hỗ trợ có nhiệm vụ <mark class='bg-yellow-200 dark:bg-yellow-900/50 text-yellow-900 dark:text-yellow-200 px-1 rounded'>cung cấp bằng chứng và ví dụ</mark> cho ý chính." }
         ];
 
+        // FULL 6 ESSAY TASKS
         const essayTasksData = [
             {
                 title: "WRITING TASK 1: Famous Person",
-                prompt: "Write a well–organized paragraph (120–150 words) to describe a famous person you like. Your writing should include the following information: name, age, birthplace, occupation, physical appearance (e.g., height, hair color, eye color), personality (e.g., kind, funny), and why you admire him/her.",
-                questions: [
-                    "Question 1: Write a clear topic sentence.",
-                    "Question 2: Write two supporting ideas.",
-                    "Question 3: List four linking words/phrases you will use in your writing.",
-                    "Question 4: Write a concluding sentence.",
-                    "Question 5: Use all prompts above to write a complete paragraph."
-                ],
-                defaults: [
-                    "Albert Einstein is a famous historical figure whom I admire deeply for his genius and perseverance.",
-                    "First, he was a brilliant physicist with a unique visual thinking style who developed the theory of relativity. Second, he had a striking appearance with wild white hair and a gentle, humorous personality.",
-                    "First, Second, In addition, In conclusion",
-                    "In conclusion, Albert Einstein's intelligence and dedication serve as an everlasting source of inspiration for my academic journey.",
-                    "Albert Einstein is a famous scientist whom I admire deeply for his genius and perseverance. He was born in Germany and worked as a theoretical physicist. First, he was a brilliant physicist with a unique visual thinking style who developed the groundbreaking theory of relativity. Second, he had a striking appearance with wild white hair, warm eyes, and a very gentle, humorous personality. In addition, despite his massive success, he always remained humble and never stopped learning about the universe. His contributions changed the world of science forever. In conclusion, Albert Einstein's intelligence and dedication serve as an everlasting source of inspiration for my academic journey, and I highly respect him."
-                ],
-                keywords: ["einstein", "physicist", "theory", "relativity", "inspiration"],
-                minWords: 120,
-                maxWords: 150
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a famous person you like. Include: name, age, birthplace, occupation, physical appearance, personality, and why you admire him/her.",
+                questions: ["Question 1: Write a clear topic sentence.", "Question 2: Write two supporting ideas.", "Question 3: List four linking words/phrases.", "Question 4: Write a concluding sentence.", "Question 5: Write a complete paragraph."]
             },
             {
                 title: "WRITING TASK 2: Family Member",
-                prompt: "Write a well–organized paragraph (120–150 words) to describe a family member you admire. Your writing should include the following information: name, age, relationship to you, occupation, physical appearance, personality traits, and the reasons why you admire them.",
-                questions: [
-                    "Question 1: Write a clear topic sentence.",
-                    "Question 2: Write two supporting ideas.",
-                    "Question 3: List four linking words/phrases you will use in your writing.",
-                    "Question 4: Write a concluding sentence.",
-                    "Question 5: Use all prompts above to write a complete paragraph."
-                ],
-                defaults: [
-                    "The family member I admire the most is my mother, who is a wonderful and hardworking woman.",
-                    "First, she is forty-five years old, works as a teacher, and has a gentle face with warm brown eyes. Second, she is incredibly patient and kind, always supporting me through difficult times.",
-                    "First, Second, Moreover, In conclusion",
-                    "In conclusion, I am forever grateful for my mother's endless love and sacrifice, and I hope to make her proud.",
-                    "The family member I admire the most is my mother, who is a wonderful and hardworking woman. She is forty-five years old and currently works as a dedicated high school teacher. First, she has a gentle face with warm brown eyes, long black hair, and a reassuring smile that always comforts me. Second, she is incredibly patient and kind, always supporting me through difficult times and teaching me valuable life lessons. Moreover, despite her busy teaching schedule, she always makes time to cook delicious meals and care for our family. She is the strongest person I know. In conclusion, I am forever grateful for my mother's endless love and sacrifice, and I hope to make her proud of my future achievements."
-                ],
-                keywords: ["mother", "gentle", "patient", "teacher", "sacrifice"],
-                minWords: 120,
-                maxWords: 150
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a family member you admire. Include: name, age, relationship to you, occupation, physical appearance, personality traits, and reasons.",
+                questions: ["Question 1: Write a clear topic sentence.", "Question 2: Write two supporting ideas.", "Question 3: List four linking words/phrases.", "Question 4: Write a concluding sentence.", "Question 5: Write a complete paragraph."]
             },
             {
                 title: "WRITING TASK 3: Best Friend",
-                prompt: "Write a well–organized paragraph (120–150 words) to describe your best friend. Your writing should include the following information: name, age, how you met, occupation or field of study, physical appearance, personality, and why this friendship is important to you.",
-                questions: [
-                    "Question 1: Write a clear topic sentence.",
-                    "Question 2: Write two supporting ideas.",
-                    "Question 3: List four linking words/phrases you will use in your writing.",
-                    "Question 4: Write a concluding sentence.",
-                    "Question 5: Use all prompts above to write a complete paragraph."
-                ],
-                defaults: [
-                    "My best friend is Lan, who was my classmate in high school.",
-                    "First, she is very kind and always helped me with difficult homework when we studied together. Second, she is a funny girl who has a beautiful smile and a great sense of humor.",
-                    "First, Second, In addition, In conclusion",
-                    "In conclusion, I am very happy to have Lan as my best friend, and I hope we will always stay close.",
-                    "My best friend is Lan, who was my classmate in high school. She is 20 years old and she was born in Tra Vinh. Now, she is a student at Tra Vinh University. Lan is a beautiful girl with long black hair, big eyes, and a very kind smile. First, she is very helpful and always helped me with difficult homework when we studied together in high school. Second, she is a funny girl who has a great sense of humor and always makes me laugh. In addition, because we have been friends for a long time, we like to do many activities together such as going to the coffee shop on weekends and watching movies in our free time. In conclusion, I am very happy to have Lan as my best friend, and I hope we will always stay close."
-                ],
-                keywords: ["friend", "high school", "smile", "humor", "close"],
-                minWords: 120,
-                maxWords: 150
+                prompt: "Write a well–organized paragraph (120–150 words) to describe your best friend. Include: name, age, how you met, occupation/study, physical appearance, personality, and importance of friendship.",
+                questions: ["Question 1: Write a clear topic sentence.", "Question 2: Write two supporting ideas.", "Question 3: List four linking words/phrases.", "Question 4: Write a concluding sentence.", "Question 5: Write a complete paragraph."]
             },
             {
                 title: "WRITING TASK 4: Inspiring Teacher",
-                prompt: "Write a well–organized paragraph (120–150 words) to describe a teacher who inspired you. Your writing should include the following information: name, the subject they taught, physical appearance, personality (e.g., patient, energetic), their teaching style, and why you appreciate them.",
-                questions: [
-                    "Question 1: Write a clear topic sentence.",
-                    "Question 2: Write two supporting ideas.",
-                    "Question 3: List four linking words/phrases you will use in your writing.",
-                    "Question 4: Write a concluding sentence.",
-                    "Question 5: Use all prompts above to write a complete paragraph."
-                ],
-                defaults: [
-                    "Mr. Minh, my high school English teacher, is the most inspiring educator I have ever met.",
-                    "First, he is a tall man with a neat appearance who always wears a friendly smile in class. Second, he is very patient and energetic, using a fun and interactive teaching style to make English easy to understand.",
-                    "First, Second, Furthermore, To sum up",
-                    "To sum up, I highly appreciate Mr. Minh for his dedication, and he is the reason I love English today.",
-                    "Mr. Minh, my high school English teacher, is the most inspiring educator I have ever met. First, he is a tall man with a neat appearance, short black hair, and he always wears a friendly smile in class. Second, he is very patient and energetic, which makes every student feel comfortable. Furthermore, his teaching style is highly interactive and fun; he often uses games and real-life stories to make difficult English grammar easy to understand. Whenever I made a mistake, he never got angry but gently corrected me and encouraged me to try again. I appreciate him because he gave me the confidence to speak a foreign language. To sum up, I highly appreciate Mr. Minh for his dedication, and he is the reason I love English today."
-                ],
-                keywords: ["teacher", "english", "patient", "interactive", "appreciate"],
-                minWords: 120,
-                maxWords: 150
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a teacher who inspired you. Include: name, subject taught, physical appearance, personality, teaching style, and why you appreciate them.",
+                questions: ["Question 1: Write a clear topic sentence.", "Question 2: Write two supporting ideas.", "Question 3: List four linking words/phrases.", "Question 4: Write a concluding sentence.", "Question 5: Write a complete paragraph."]
             },
             {
                 title: "WRITING TASK 5: A Neighbor",
-                prompt: "Write a well–organized paragraph (120–150 words) to describe a neighbor you know well. Your writing should include the following information: name, age, how long you have lived near each other, physical appearance, personality (e.g., friendly, helpful), and a small memory or reason why you like them.",
-                questions: [
-                    "Question 1: Write a clear topic sentence.",
-                    "Question 2: Write two supporting ideas.",
-                    "Question 3: List four linking words/phrases you will use in your writing.",
-                    "Question 4: Write a concluding sentence.",
-                    "Question 5: Use all prompts above to write a complete paragraph."
-                ],
-                defaults: [
-                    "Mrs. Hoa is a wonderful neighbor who has lived next to my house for over ten years.",
-                    "First, she is a sixty-year-old retired nurse with short curly hair and a very welcoming face. Second, she is extremely friendly and helpful, often sharing delicious home-cooked food with my family.",
-                    "First, Second, For example, In conclusion",
-                    "In conclusion, Mrs. Hoa is a fantastic neighbor, and I am very lucky to live next to such a caring person.",
-                    "Mrs. Hoa is a wonderful neighbor who has lived next to my house for over ten years. First, she is a sixty-year-old retired nurse with short curly hair, an active build, and a very welcoming face. Second, she is extremely friendly and helpful to everyone in our community. For example, I will always remember the time I was sick, and she kindly cooked a hot bowl of soup and brought it to my room to help me recover. Moreover, she loves gardening and often gives my family beautiful flowers from her backyard. Having a good relationship with neighbors makes life much more pleasant. In conclusion, Mrs. Hoa is a fantastic neighbor, and I am very lucky to live next to such a caring person."
-                ],
-                keywords: ["neighbor", "friendly", "helpful", "caring", "lucky"],
-                minWords: 120,
-                maxWords: 150
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a neighbor you know well. Include: name, age, how long living near, physical appearance, personality, and a memory.",
+                questions: ["Question 1: Write a clear topic sentence.", "Question 2: Write two supporting ideas.", "Question 3: List four linking words/phrases.", "Question 4: Write a concluding sentence.", "Question 5: Write a complete paragraph."]
             },
             {
                 title: "WRITING TASK 6: Talented Athlete",
-                prompt: "Write a well–organized paragraph (120–150 words) to describe a talented athlete you follow. Your writing should include the following information: name, the sport they play, nationality, physical appearance (e.g., build, height), personality (e.g., disciplined, persistent), and why you are a fan of them.",
-                questions: [
-                    "Question 1: Write a clear topic sentence.",
-                    "Question 2: Write two supporting ideas.",
-                    "Question 3: List four linking words/phrases you will use in your writing.",
-                    "Question 4: Write a concluding sentence.",
-                    "Question 5: Use all prompts above to write a complete paragraph."
-                ],
-                defaults: [
-                    "Cristiano Ronaldo is a highly talented Portuguese football player whom I greatly admire.",
-                    "First, he has a very athletic and muscular build, standing at over 1.85 meters tall, which helps him perform excellently on the pitch. Second, he is incredibly disciplined and persistent, always training hard to maintain his top physical condition.",
-                    "First, Second, Moreover, In conclusion",
-                    "In conclusion, Ronaldo's incredible work ethic and success make him a true legend, and I will always be his biggest fan.",
-                    "Cristiano Ronaldo is a highly talented Portuguese football player whom I greatly admire. First, he has a very athletic and muscular build, standing at over 1.85 meters tall, which helps him perform excellently on the football pitch. Second, he is incredibly disciplined and persistent. Even though he has achieved massive success and won many awards, he continues to train harder than anyone else to maintain his top physical condition. Moreover, I am a huge fan of him not only because of his brilliant goal-scoring skills but also because of his generous charity work off the field. He constantly inspires young athletes to pursue their dreams. In conclusion, Ronaldo's incredible work ethic and success make him a true legend, and I will always be his biggest fan."
-                ],
-                keywords: ["athlete", "football", "disciplined", "persistent", "legend"],
-                minWords: 120,
-                maxWords: 150
+                prompt: "Write a well–organized paragraph (120–150 words) to describe a talented athlete. Include: name, sport, nationality, physical appearance, personality, and why you are a fan.",
+                questions: ["Question 1: Write a clear topic sentence.", "Question 2: Write two supporting ideas.", "Question 3: List four linking words/phrases.", "Question 4: Write a concluding sentence.", "Question 5: Write a complete paragraph."]
             }
         ];
+
+        // TOPIC MAPPINGS (Việt hóa)
+        const essayTopicsMap = {
+            0: ["Sơn Tùng M-TP (ca sĩ)", "Mỹ Tâm (ca sĩ)", "Nguyễn Quang Hải (bóng đá)", "Lại Văn Sâm (MC)", "Phạm Nhật Vượng (doanh nhân)"],
+            1: ["Mẹ của tôi (nội trợ)", "Bố của tôi (kỹ sư)", "Ông nội tôi (hưu trí)", "Anh trai tôi (sinh viên)", "Chị gái tôi (văn phòng)"],
+            2: ["Nguyễn Văn A (bạn cùng bàn)", "Trần Thị B (bạn hàng xóm)", "Lê Văn C (bạn đại học)", "Phạm Thị D (đội trưởng)", "Hoàng Văn E (bạn từ nhỏ)"],
+            3: ["Thầy Nguyễn Văn A (Toán)", "Cô Trần Thị B (Anh)", "Thầy Lê Văn C (Văn)", "Cô Phạm Thị D (Lịch sử)", "Thầy Hoàng Văn E (Thể dục)"],
+            4: ["Bác Tư (bán phở)", "Cô Năm (thợ may)", "Chú Sáu (sửa xe)", "Dì Bảy (tạp hóa)", "Anh Tám (bảo vệ)"],
+            5: ["Nguyễn Quang Hải (bóng đá)", "Nguyễn Thị Oanh (điền kinh)", "Hoàng Xuân Vinh (bắn súng)", "Trần Quyết Chiến (billiards)", "Thúy Hiền (wushu)"]
+        };
 
         const state = {
             darkMode: true,
@@ -609,7 +513,6 @@
                     Gắn cờ câu hỏi
                 `;
             }
-            
             renderSidebarGrids();
         }
 
@@ -715,8 +618,8 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 Đáp án chính xác là: ${String.fromCharCode(65 + q.answer)}
                             </div>
-                            <p class="leading-relaxed">
-                                <span class="font-bold">Giải thích:</span> ${q.explanation}
+                            <p class="leading-relaxed mt-2 text-gray-800 dark:text-zinc-200">
+                                ${q.explanation}
                             </p>
                         </div>
 
@@ -760,6 +663,107 @@
             if (statCorrCount) statCorrCount.innerText = `${correct}`;
         }
 
+        window.customSamples = {};
+
+        function getDynamicContent(taskIdx, topic) {
+            let name = topic.split('(')[0].trim();
+            const rawDetail = topic.match(/\((.*?)\)/)?.[1] || "";
+
+            // A1-A2 Simple English Translation
+            if(name === "Mẹ của tôi") name = "my mother";
+            else if(name === "Bố của tôi") name = "my father";
+            else if(name === "Ông nội tôi") name = "my grandfather";
+            else if(name === "Anh trai tôi") name = "my older brother";
+            else if(name === "Chị gái tôi") name = "my older sister";
+
+            let enDetail = "person";
+            const lowerDetail = rawDetail.toLowerCase();
+            if (lowerDetail.includes("ca sĩ")) enDetail = "singer";
+            else if (lowerDetail.includes("mc") || lowerDetail.includes("diễn viên")) enDetail = "actor";
+            else if (lowerDetail.includes("doanh nhân")) enDetail = "businessman";
+            else if (lowerDetail.includes("nội trợ")) enDetail = "housewife";
+            else if (lowerDetail.includes("nông dân")) enDetail = "farmer";
+            else if (lowerDetail.includes("hưu trí")) enDetail = "retired worker";
+            else if (lowerDetail.includes("kỹ sư")) enDetail = "engineer";
+            else if (lowerDetail.includes("văn phòng")) enDetail = "office worker";
+            else if (lowerDetail.includes("bạn cùng bàn")) enDetail = "classmate";
+            else if (lowerDetail.includes("hàng xóm")) enDetail = "neighbor";
+            else if (lowerDetail.includes("đại học")) enDetail = "university friend";
+            else if (lowerDetail.includes("bạn từ nhỏ")) enDetail = "childhood friend";
+            else if (lowerDetail.includes("đội trưởng")) enDetail = "team captain";
+            else if (lowerDetail.includes("toán")) enDetail = "math teacher";
+            else if (lowerDetail.includes("anh")) enDetail = "English teacher";
+            else if (lowerDetail.includes("văn")) enDetail = "literature teacher";
+            else if (lowerDetail.includes("lịch sử")) enDetail = "history teacher";
+            else if (lowerDetail.includes("thể dục")) enDetail = "PE teacher";
+            else if (lowerDetail.includes("bán phở")) enDetail = "food seller";
+            else if (lowerDetail.includes("thợ may")) enDetail = "tailor";
+            else if (lowerDetail.includes("sửa xe")) enDetail = "mechanic";
+            else if (lowerDetail.includes("tạp hóa")) enDetail = "shop owner";
+            else if (lowerDetail.includes("bảo vệ")) enDetail = "security guard";
+            else if (lowerDetail.includes("bóng đá")) enDetail = "football player";
+            else if (lowerDetail.includes("điền kinh")) enDetail = "runner";
+            else if (lowerDetail.includes("bắn súng")) enDetail = "shooter";
+            else if (lowerDetail.includes("billiards")) enDetail = "billiards player";
+            else if (lowerDetail.includes("wushu")) enDetail = "wushu athlete";
+
+            let q0, q1, q2, q3, q4;
+
+            if (taskIdx === 0) { // Famous Person
+                q0 = `I would like to describe a famous person that I really admire, and that is ${name}.`;
+                q1 = `First, ${name} is a very talented ${enDetail} who is about 30 years old and was born in Vietnam. This person is tall and has nice black hair. Second, ${name} is very kind and funny. They always smile and help poor people.`;
+                q2 = "First, Second, Also, In conclusion";
+                q3 = `In conclusion, ${name} is a great ${enDetail} and a good example for young people. I hope to meet this person one day.`;
+                q4 = `I would like to describe a famous person that I really admire, and that is ${name}. First, ${name} is a very talented ${enDetail} who is about 30 years old and was born in a beautiful city in Vietnam. This person is tall, looks very fit, and has nice black hair. Second, ${name} is very kind and funny. They always smile and help poor people in our country. Also, I admire ${name} because this person works very hard every day to achieve success. They practice for many hours and never give up. I like watching them on TV with my family on the weekend. In conclusion, ${name} is a great ${enDetail} and a good example for young people. I hope to meet this person one day.`;
+            } else if (taskIdx === 1) { // Family
+                q0 = `The family member that I admire the most is ${name}.`;
+                q1 = `First, ${name} is 50 years old and works very hard every day. They are tall, strong, and always wear neat clothes. Second, ${name} is very caring and patient. They always listen to my problems and give me good advice.`;
+                q2 = "First, Second, In addition, In conclusion";
+                q3 = `In conclusion, I love and respect ${name} very much, and I want to be a good person like them.`;
+                q4 = `The family member that I admire the most is ${name}. First, ${name} is 50 years old and works very hard every day to support our family. They are tall, look strong, and have black hair. They always have a warm smile on their face. Second, ${name} is very caring and patient with everyone. They always listen to my problems and give me good advice when I feel sad. In addition, I admire ${name} because they cook very delicious food and teach me how to be a good person. We often watch TV and talk together in the evening. In conclusion, I love and respect ${name} very much, and I want to be a good person like them in the future.`;
+            } else if (taskIdx === 2) { // Friend
+                q0 = `I want to talk about my best friend, whose name is ${name}.`;
+                q1 = `First, ${name} is 20 years old and is a very smart student. We met at school five years ago. My friend is tall, thin, and has short black hair. Second, ${name} is very friendly and funny. They always make me laugh.`;
+                q2 = "First, Second, Moreover, In conclusion";
+                q3 = `In conclusion, ${name} is a wonderful friend, and I hope our friendship will last forever.`;
+                q4 = `I want to talk about my best friend, whose name is ${name}. First, ${name} is 20 years old and is a very smart student. We met at school five years ago and became close friends very quickly. My friend is tall, thin, and has short black hair with dark eyes. Second, ${name} is very friendly and funny. They always tell good jokes and make me laugh when I am tired. Moreover, this friendship is very important to me because ${name} always helps me with my difficult homework. We often go to the library to study and play sports together on the weekend. We share many happy memories. In conclusion, ${name} is a wonderful friend, and I hope our friendship will last forever.`;
+            } else if (taskIdx === 3) { // Teacher
+                q0 = `The teacher who inspired me the most is ${name}, my former ${enDetail}.`;
+                q1 = `First, ${name} is a good-looking teacher with a kind face and neat clothes. This teacher is very patient and always smiles. Second, their teaching style is very fun and easy to understand. They use many games in class.`;
+                q2 = "First, Second, Furthermore, In conclusion";
+                q3 = `In conclusion, ${name} is a fantastic teacher, and I will always remember their great lessons.`;
+                q4 = `The teacher who inspired me the most is ${name}, my former ${enDetail}. First, ${name} is a good-looking teacher with a kind face, short hair, and neat clothes. This teacher is very patient and always smiles with all the students in the class. Second, their teaching style is very fun and easy to understand. They often use many interesting games and beautiful pictures to explain the lessons. Furthermore, I appreciate this teacher because they never get angry when we make mistakes. Instead, they help us carefully until we understand. Thanks to this teacher, I love studying much more than before. In conclusion, ${name} is a fantastic teacher, and I will always remember their great lessons and kind heart.`;
+            } else if (taskIdx === 4) { // Neighbor
+                q0 = `I would like to describe a very good neighbor of mine, who is ${name}.`;
+                q1 = `First, ${name} is about 45 years old, and we have lived near each other for ten years. This person has a friendly face and always wears simple clothes. Second, my neighbor is very kind and helpful to everyone in the street.`;
+                q2 = "First, Second, Also, In conclusion";
+                q3 = `In conclusion, having a good neighbor like ${name} makes my life much happier and safer.`;
+                q4 = `I would like to describe a very good neighbor of mine, who is ${name}. First, ${name} is about 45 years old, and we have lived near each other for ten years. This person is not very tall, has a friendly face, and always wears simple clothes. Second, my neighbor is very kind and helpful to everyone in the street. For example, they often help my family look after our house when we go on holiday. Also, I really like ${name} because they cook very well. Last month, they gave me a very delicious bowl of food, and we had a fun talk together. We always say hello in the morning. In conclusion, having a good neighbor like ${name} makes my life much happier and safer.`;
+            } else { // Athlete
+                q0 = `My favorite talented athlete is ${name}, who is a very famous ${enDetail} in Vietnam.`;
+                q1 = `First, this athlete has a very strong and fit body, and is quite tall. This helps them move very fast in the game. Second, ${name} is very disciplined and hard-working. They practice for many hours every single day.`;
+                q2 = "First, Second, In addition, In conclusion";
+                q3 = `In conclusion, ${name} is a great sports star, and I will always support them.`;
+                q4 = `My favorite talented athlete is ${name}, who is a very famous ${enDetail} in Vietnam. First, this athlete has a very strong and fit body, and is quite tall. This helps them move very fast and play the game very well. They always look full of energy. Second, ${name} is very disciplined and hard-working. They practice for many hours every single day and never give up, even when they are tired or injured. In addition, I am a big fan of ${name} because they play fairly and respect other players. They also use their money to help poor children in our country. I always watch their matches on TV. In conclusion, ${name} is a great sports star, and I will always support them.`;
+            }
+
+            const h0 = `Viết câu đơn giản giới thiệu chủ đề (ví dụ: Tên, nghề nghiệp của ${name}).`;
+            const h1 = `Dùng "First," và "Second," để kể 2 điểm tốt/tính cách đặc biệt của ${name}.`;
+            const h2 = `Liệt kê 4 từ nối học thuật cơ bản nhất: ${q2}.`;
+            const h3 = `Dùng "In conclusion," để chốt lại cảm xúc của bạn (ví dụ: kính trọng, tự hào, yêu quý).`;
+            const h4 = `Ghép toàn bộ các phần lại thành đoạn văn dài 120-150 từ.`;
+
+            const samples = [q0, q1, q2, q3, q4];
+            
+            const highlightedSamples = samples.map(text => {
+                let html = text.replace(/\b(First|Second|Moreover|Furthermore|In addition|Also|In conclusion|For example)\b/gi, '<span class="bg-amber-200 dark:bg-amber-500/40 text-amber-900 dark:text-amber-200 font-black px-1.5 py-0.5 rounded shadow-sm mx-0.5 inline-block">$&</span>');
+                html = html.replace(/\b(famous|talented|kind|hard|friendly|smile|smart|funny|patient|good|delicious|lucky|strong|fast|hero|wonderful|special|important|love|admire|popular|tall|thin|caring|respect|smart|close|jokes|handsome|neat|fun|safe|fit|disciplined|support|hard-working|fairly|energy|beautiful|warm|patient|happy)\b/gi, '<span class="text-[#005b94] dark:text-sky-400 font-extrabold underline decoration-dashed">$&</span>');
+                return html;
+            });
+
+            return { samples, highlightedSamples, hints: [h0, h1, h2, h3, h4] };
+        }
+
         function populateEssaySelector() {
             const select = getEl('essay-task-select');
             select.innerHTML = state.currentEssayTasks.map((task, idx) => {
@@ -776,8 +780,16 @@
             getEl('essay-task-title').innerText = task.title;
             getEl('essay-task-prompt').innerText = task.prompt;
             
+            // Populate Topics Dropdown
+            const topicSelect = getEl('custom-topic-select');
+            const topics = essayTopicsMap[taskIdx] || [];
+            topicSelect.innerHTML = topics.map(t => `<option value="${t}">${t}</option>`).join('');
+            
             renderEssayQuestions(task, taskIdx);
             
+            // Auto generate hints for the first topic
+            generateCustomHints();
+
             getEl('essay-grading-panel').innerHTML = `
                 <div class="text-center py-8 text-gray-400 space-y-3">
                     <svg class="w-12 h-12 text-gray-300 dark:text-zinc-700 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 .364l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
@@ -785,6 +797,55 @@
                     <p class="text-[10px] text-gray-500 dark:text-zinc-500 leading-relaxed">Hãy hoàn thành câu trả lời cho cả 5 phần bên trái rồi nhấp chọn "Nộp bài & Chấm điểm Tự động".</p>
                 </div>
             `;
+        }
+
+        function generateCustomHints() {
+            const topicSelect = getEl('custom-topic-select');
+            const topic = topicSelect.value;
+            const taskIdx = state.selectedEssayTaskIndex;
+            
+            if(!topic) return;
+            
+            const content = getDynamicContent(taskIdx, topic);
+            
+            for(let i = 0; i < 5; i++) {
+                const hintBox = getEl(`hint-box-${i}`);
+                const customBtn = getEl(`btn-custom-sample-${i}`);
+                
+                if(hintBox) {
+                    hintBox.innerHTML = `<strong><i class="fa-solid fa-lightbulb text-amber-500"></i> Gợi ý tự viết:</strong> ${content.hints[i]}`;
+                    hintBox.classList.remove('hidden');
+                }
+                
+                if(customBtn) {
+                    customBtn.classList.remove('hidden');
+                }
+                
+                window.customSamples[i] = {
+                    plain: content.samples[i],
+                    html: content.highlightedSamples[i]
+                };
+            }
+        }
+
+        function applyCustomSampleText(qIdx) {
+            const sampleData = window.customSamples[qIdx];
+            if(!sampleData) return;
+            
+            const textarea = getEl(`textarea-${qIdx}`);
+            textarea.value = sampleData.plain;
+            
+            const tIdx = state.selectedEssayTaskIndex;
+            handleEssayInput(tIdx, qIdx, sampleData.plain);
+            
+            const highlightBox = getEl(`highlight-box-${qIdx}`);
+            if (highlightBox) {
+                highlightBox.innerHTML = `<strong><i class="fa-solid fa-magnifying-glass text-[#005b94] dark:text-sky-400"></i> Phân tích cấu trúc bài mẫu:</strong><br/><div class="mt-2 p-3 bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-700 leading-relaxed text-sm">${sampleData.html}</div>`;
+                highlightBox.classList.remove('hidden');
+                highlightBox.classList.add('animate-fadeIn');
+            }
+            
+            showToast('Đã nạp bài mẫu cấu trúc theo chủ đề!', 'success');
         }
 
         function countWords(str) {
@@ -812,15 +873,6 @@
             }
         }
 
-        function applySampleText(qIdx) {
-            const tIdx = state.selectedEssayTaskIndex;
-            const sampleValue = state.currentEssayTasks[tIdx].defaults[qIdx];
-            
-            const textarea = getEl(`textarea-${qIdx}`);
-            textarea.value = sampleValue;
-            handleEssayInput(tIdx, qIdx, sampleValue);
-        }
-
         function renderEssayQuestions(task, taskIdx) {
             const container = getEl('essay-subquestions-container');
             let questionsHtml = '';
@@ -838,9 +890,9 @@
                         
                         <div class="flex items-center justify-between gap-2 mb-3">
                             <span class="font-extrabold text-xs md:text-sm text-emerald-600 dark:text-emerald-400">Câu ${qIdx + 1}: ${isParagraph ? 'ĐOẠN VĂN HOÀN CHỈNH' : 'PHẦN KHAI TRIỂN'}</span>
-                            <div class="flex gap-2">
-                                <button onclick="applySampleText(${qIdx})" class="px-2 py-1 bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-zinc-300 font-bold text-[10px] rounded border border-gray-300 dark:border-zinc-700 transition-colors">
-                                    Nạp bài mẫu
+                            <div class="flex flex-wrap justify-end gap-2">
+                                <button onclick="applyCustomSampleText(${qIdx})" class="hidden px-2 py-1 bg-sky-100 dark:bg-sky-950/30 hover:bg-sky-200 dark:hover:bg-sky-900/50 text-[#005b94] dark:text-sky-300 font-bold text-[10px] rounded border border-sky-300 dark:border-sky-700 transition-colors" id="btn-custom-sample-${qIdx}">
+                                    Nạp bài mẫu theo chủ đề
                                 </button>
                                 <button onclick="checkEssayPart(${taskIdx}, ${qIdx})" class="px-2 py-1 bg-[#005b94] hover:bg-[#004775] text-white font-bold text-[10px] rounded shadow transition-colors cursor-pointer">
                                     Kiểm tra
@@ -852,11 +904,15 @@
                             <span>${questionLabel}</span><span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">${minWordsHint}</span>
                         </div>
 
+                        <div id="hint-box-${qIdx}" class="hidden mb-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 text-xs text-amber-900 dark:text-amber-200 leading-relaxed"></div>
+                        
+                        <div id="highlight-box-${qIdx}" class="hidden mb-3 p-3 rounded-lg bg-sky-50 dark:bg-[#005b94]/10 border border-sky-200 dark:border-[#005b94]/40 text-xs text-sky-950 dark:text-sky-100 leading-relaxed shadow-inner"></div>
+
                         <textarea 
                             id="textarea-${qIdx}"
                             oninput="handleEssayInput(${taskIdx}, ${qIdx}, this.value)"
                             placeholder="Nhập câu trả lời của bạn tại đây bằng Tiếng Anh..." 
-                            class="w-full min-h-[90px] ${isParagraph ? 'min-h-[160px]' : ''} p-3 rounded-lg border border-gray-350 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#005b94] bg-gray-50 dark:bg-zinc-900 text-gray-950 dark:text-white font-medium text-xs md:text-sm"
+                            class="w-full min-h-[90px] ${isParagraph ? 'min-h-[160px]' : ''} p-3 rounded-lg border border-gray-350 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#005b94] bg-gray-50 dark:bg-zinc-900 text-gray-950 dark:text-white font-medium text-xs md:text-sm custom-scrollbar"
                         >${currentValue}</textarea>
 
                         <div class="flex justify-between items-center mt-2 text-xs text-gray-500 font-semibold">
@@ -1013,9 +1069,6 @@
             }
             
             let keywordBonus = 0;
-            task.keywords.forEach(kw => {
-                if (cleanParagraph.includes(kw)) keywordBonus += 0.5;
-            });
             
             q4Score = Math.min(10, countScore + consistencyScore + Math.min(2, keywordBonus));
             
@@ -1143,7 +1196,6 @@
 
         window.onload = function() {
             switchView('dashboard');
-            // Mặc định ở chế độ Dark Mode theo cấu hình trước đó, bạn có thể click nút để thay đổi
             toggleDarkMode();
         };
     </script>
